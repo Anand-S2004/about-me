@@ -29,28 +29,35 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Lightbulb container */
+    /* Lightbulb image behind the text box */
     .lightbulb {
       position: absolute;
-      bottom: 50px;
-      right: 50px;
-      width: 180px;
-      height: 180px;
-      opacity: 0.15;
-      z-index: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* perfectly centered behind container */
+      width: 280px;
+      height: auto;
+      opacity: 0.25; /* image visibility */
+      z-index: 0; /* behind the container */
     }
 
     .lightbulb img {
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 0 40px rgba(255, 255, 150, 0.5))
-              drop-shadow(0 0 80px rgba(255, 255, 200, 0.2));
+      filter: drop-shadow(0 0 40px rgba(255, 255, 180, 0.6))
+              drop-shadow(0 0 80px rgba(255, 255, 180, 0.3));
       animation: bulbGlow 6s ease-in-out infinite alternate;
     }
 
     @keyframes bulbGlow {
-      from { filter: drop-shadow(0 0 20px rgba(255,255,150,0.4)) drop-shadow(0 0 40px rgba(255,255,200,0.15)); }
-      to   { filter: drop-shadow(0 0 40px rgba(255,255,180,0.6)) drop-shadow(0 0 80px rgba(255,255,220,0.25)); }
+      from {
+        filter: drop-shadow(0 0 30px rgba(255,255,180,0.5))
+                drop-shadow(0 0 60px rgba(255,255,180,0.25));
+      }
+      to {
+        filter: drop-shadow(0 0 60px rgba(255,255,200,0.8))
+                drop-shadow(0 0 100px rgba(255,255,200,0.4));
+      }
     }
 
     .container {
@@ -63,7 +70,7 @@
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       transition: transform 0.25s ease;
-      z-index: 1;
+      z-index: 1; /* sits above the bulb */
     }
 
     .container:hover {
@@ -122,18 +129,15 @@
       }
 
       .lightbulb {
-        width: 120px;
-        height: 120px;
-        bottom: 20px;
-        right: 20px;
+        width: 180px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Lightbulb image with subtle glow -->
+  <!-- Lightbulb behind container -->
   <div class="lightbulb">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Light_bulb_icon.svg/512px-Light_bulb_icon.svg.png" alt="Lightbulb">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Lightbulb_icon.svg/512px-Lightbulb_icon.svg.png" alt="Lightbulb">
   </div>
 
   <div class="container" align="center">
