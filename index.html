@@ -29,43 +29,33 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Glowing brain/lightbulb-like effect */
-    body::before {
-      content: "";
+    /* Lightbulb container */
+    .lightbulb {
       position: absolute;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(79,70,229,0.7), transparent 70%);
-      border-radius: 50%;
-      top: -200px;
-      right: -200px;
-      filter: blur(150px);
-      animation: pulse 8s ease-in-out infinite;
+      bottom: 50px;
+      right: 50px;
+      width: 180px;
+      height: 180px;
+      opacity: 0.15;
       z-index: 0;
     }
 
-    body::after {
-      content: "";
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(34,197,94,0.6), transparent 70%);
-      border-radius: 50%;
-      bottom: -180px;
-      left: -180px;
-      filter: blur(140px);
-      animation: pulse 10s ease-in-out infinite alternate;
-      z-index: 0;
+    .lightbulb img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 40px rgba(255, 255, 150, 0.5))
+              drop-shadow(0 0 80px rgba(255, 255, 200, 0.2));
+      animation: bulbGlow 6s ease-in-out infinite alternate;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.8; }
-      50% { transform: scale(1.2); opacity: 1; }
+    @keyframes bulbGlow {
+      from { filter: drop-shadow(0 0 20px rgba(255,255,150,0.4)) drop-shadow(0 0 40px rgba(255,255,200,0.15)); }
+      to   { filter: drop-shadow(0 0 40px rgba(255,255,180,0.6)) drop-shadow(0 0 80px rgba(255,255,220,0.25)); }
     }
 
     .container {
       position: relative;
-      background: rgba(17, 24, 39, 0.85); /* dark glassy box */
+      background: rgba(17, 24, 39, 0.85);
       border-radius: 20px;
       padding: 40px;
       max-width: 850px;
@@ -130,10 +120,22 @@
       h1 {
         font-size: 1.8rem;
       }
+
+      .lightbulb {
+        width: 120px;
+        height: 120px;
+        bottom: 20px;
+        right: 20px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Lightbulb image with subtle glow -->
+  <div class="lightbulb">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Light_bulb_icon.svg/512px-Light_bulb_icon.svg.png" alt="Lightbulb">
+  </div>
+
   <div class="container" align="center">
     <img class="profile-photo" src="your-photo.jpg" alt="Anand Srinivasan Photo">
     <h1>Anand Srinivasan</h1>
