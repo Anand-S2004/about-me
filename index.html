@@ -17,10 +17,10 @@
       color: #f0f4f8;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* align top so scrolling feels natural */
       min-height: 100vh;
       position: relative;
-      overflow: hidden;
+      overflow-y: auto; /* scrolling enabled */
     }
 
     @keyframes backgroundShift {
@@ -29,23 +29,24 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Lightbulb image behind the text box */
+    /* Lightbulb image behind container */
     .lightbulb {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); /* perfectly centered behind container */
-      width: 280px;
+      transform: translate(-50%, -50%);
+      width: 300px;
       height: auto;
-      opacity: 0.25; /* image visibility */
-      z-index: 0; /* behind the container */
+      opacity: 0.25; /* bulb visibility */
+      z-index: 0; /* behind container */
+      pointer-events: none; /* won't block clicks */
     }
 
     .lightbulb img {
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 0 40px rgba(255, 255, 180, 0.6))
-              drop-shadow(0 0 80px rgba(255, 255, 180, 0.3));
+      filter: drop-shadow(0 0 50px rgba(255, 255, 180, 0.6))
+              drop-shadow(0 0 100px rgba(255, 255, 200, 0.4));
       animation: bulbGlow 6s ease-in-out infinite alternate;
     }
 
@@ -55,22 +56,23 @@
                 drop-shadow(0 0 60px rgba(255,255,180,0.25));
       }
       to {
-        filter: drop-shadow(0 0 60px rgba(255,255,200,0.8))
-                drop-shadow(0 0 100px rgba(255,255,200,0.4));
+        filter: drop-shadow(0 0 70px rgba(255,255,200,0.8))
+                drop-shadow(0 0 120px rgba(255,255,200,0.5));
       }
     }
 
     .container {
       position: relative;
-      background: rgba(17, 24, 39, 0.85);
+      background: rgba(17, 24, 39, 0.7); /* more transparent so bulb shows */
       border-radius: 20px;
       padding: 40px;
+      margin: 60px 20px; /* spacing so scrolling looks good */
       max-width: 850px;
       box-shadow: 0 8px 40px rgba(0,0,0,0.7);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       transition: transform 0.25s ease;
-      z-index: 1; /* sits above the bulb */
+      z-index: 1; /* sits above bulb */
     }
 
     .container:hover {
@@ -129,7 +131,7 @@
       }
 
       .lightbulb {
-        width: 180px;
+        width: 200px;
       }
     }
   </style>
@@ -137,7 +139,7 @@
 <body>
   <!-- Lightbulb behind container -->
   <div class="lightbulb">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Lightbulb_icon.svg/512px-Lightbulb_icon.svg.png" alt="Lightbulb">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Light_bulb_icon_1.svg/512px-Light_bulb_icon_1.svg.png" alt="Lightbulb">
   </div>
 
   <div class="container" align="center">
