@@ -2,33 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anand Srinivasan | About Me</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
       background-size: 200% 200%;
       animation: backgroundShift 10s ease infinite;
-      color: #f0f4f8;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow-y: auto;
-      position: relative;
-      min-height: 100vh;
     }
 
     @keyframes backgroundShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      position: relative;
+      max-width: 850px;
+      width: 100%;
+      padding: 40px;
+      margin: 60px 20px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 1;
+      background-color: transparent;
+    }
+
+    .container h1, .container p {
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .container h1 {
+      font-size: 2.6rem;
+      margin: 12px 0;
+    }
+
+    .container p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 22px;
     }
 
     .lightbulb {
@@ -45,35 +68,18 @@
     .lightbulb img {
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 0 60px rgba(255, 255, 200, 0.8))
-              drop-shadow(0 0 120px rgba(255, 255, 200, 0.5));
+      filter: drop-shadow(0 0 60px rgba(255, 255, 200, 0.8)) drop-shadow(0 0 120px rgba(255, 255, 200, 0.5));
       animation: bulbGlow 6s ease-in-out infinite alternate;
     }
 
     @keyframes bulbGlow {
       from {
-        filter: drop-shadow(0 0 30px rgba(255,255,180,0.5))
-                drop-shadow(0 0 60px rgba(255,255,180,0.25));
+        filter: drop-shadow(0 0 30px rgba(255,255,180,0.5)) drop-shadow(0 0 60px rgba(255,255,180,0.25));
       }
       to {
-        filter: drop-shadow(0 0 80px rgba(255,255,210,0.9))
-                drop-shadow(0 0 160px rgba(255,255,210,0.6));
+        filter: drop-shadow(0 0 80px rgba(255,255,210,0.9)) drop-shadow(0 0 160px rgba(255,255,210,0.6));
       }
     }
-
-    .container {
-  position: relative;
-  background-color: transparent; /* Removes the background color */
-  border-radius: 20px;
-  padding: 40px;
-  margin: 60px 20px;
-  max-width: 850px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(12px); /* Optional: adds a blur effect to the content behind */
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  z-index: 1;
-}
-
 
     .profile-photo {
       width: 140px;
@@ -83,20 +89,6 @@
       border: 3px solid #4f46e5;
       box-shadow: 0 0 15px rgba(79, 70, 229, 0.7);
       margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 2.6rem;
-      margin: 12px 0;
-      color: #ffffff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    }
-
-    p {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      margin-bottom: 22px;
-      color: #d1d5db;
     }
 
     .links a {
@@ -122,12 +114,12 @@
         height: 100px;
       }
 
-      h1 {
-        font-size: 1.8rem;
-      }
-
       .lightbulb {
         width: 180px;
+      }
+
+      .container h1 {
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -159,4 +151,3 @@
   </div>
 </body>
 </html>
-
