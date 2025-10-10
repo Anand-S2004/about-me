@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Test Bulb Background</title>
+  <title>Test Lightbulb Visibility</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     html, body {
@@ -10,49 +10,125 @@
       padding: 0;
       height: 100%;
     }
+
     body {
-      position: relative;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+      background-size: 200% 200%;
+      animation: bgPulse 10s ease-in-out infinite alternate;
+      color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
       overflow-y: auto;
-      background: #101010; /* dark background so bulb shows well */
+      position: relative;
+      min-height: 100vh;
     }
+
+    @keyframes bgPulse {
+      0% {
+        filter: brightness(0.8);
+      }
+      50% {
+        filter: brightness(1.2);
+      }
+      100% {
+        filter: brightness(0.9);
+      }
+    }
+
     .lightbulb {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 1200px;
-      opacity: 0.3;
+      opacity: 0.2;
       z-index: 0;
       pointer-events: none;
     }
+
     .lightbulb img {
       width: 100%;
       height: auto;
       filter: drop-shadow(0 0 100px rgba(255, 255, 200, 0.7))
              drop-shadow(0 0 200px rgba(255, 255, 200, 0.4));
+      animation: bulbGlow 8s ease-in-out infinite alternate;
     }
+
+    @keyframes bulbGlow {
+      from {
+        filter: drop-shadow(0 0 80px rgba(255,255,200,0.6))
+               drop-shadow(0 0 160px rgba(255,255,200,0.3));
+      }
+      to {
+        filter: drop-shadow(0 0 160px rgba(255,255,220,1))
+               drop-shadow(0 0 320px rgba(255,255,220,0.5));
+      }
+    }
+
     .container {
       position: relative;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 50px;
-      margin: 100px;
-      max-width: 600px;
+      background: rgba(17, 24, 39, 0.5);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 80px 20px;
+      max-width: 850px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       z-index: 1;
-      color: white;
+    }
+
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #4f46e5;
+      box-shadow: 0 0 15px rgba(79, 70, 229, 0.7);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin: 12px 0;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 22px;
+      color: #d1d5db;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #60a5fa;
+      font-weight: 600;
+      margin-right: 24px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .links a:hover {
+      color: #93c5fd;
+      text-shadow: 0 0 6px rgba(147,197,253,0.8);
     }
   </style>
 </head>
 <body>
   <div class="lightbulb">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAABkklEQVR4Ae3Z0VGDQBBA4YeIZoDKQaR9DiomJ6KIq2JzRClL0DFEsDjF3Em0lN8Mt/Yg7wm61d96eHbkfXW+/77s9//3YZmZmZmZmZmZnYxwkrffcE+RvhG+E74RvgW+EX4Rvgk+Bb4R/ngGeBy4K/ARGVBrgEPAY4BnATuBm4DrgInAjcBbgLuA14D/CT8PPeAjsL3r+enyAzgQ3AG+Br4Evgq+Cb4MPgm+C74MLgv+C+4FrgQuAz4J3gb+A46H/IB2AX4BvgN+BzYG3AIuAacBrgG3gXuBr4EvgSuAbcB7gR+Ar4FHgH+Ar4FjgLeBN4JN4XPgX+CD4Q/gP+AD4APgI/AH8APgE+A/4AN43Gm8Bi4Hbgb2Ab+K3AO+E3wPvD/4IPgL+Aj4GnQT8AH4CBwKPBY4GnAQ+BDwHPAQ+APwEPgQeAP4EHgQ+BD4APgQ+BD4EPgQ+BP0BrAF4CbwLLAakD+A84JHwEfAQcBDwHPAQ+BD4ENgW+Bh4FvgX+WHYHHqk1FVLlihTpQs0U6ULMFGlCzBRpQs0U6ULMGSlCzBRpQs0U6ULMGlCzBRpQs0U6ULMGlCzBRpQs0U6ULMGlCzBRpQs0U6ULMGlCz8HtR2rXIJMd0xAAAAAASUVORK5CYII=" alt="Lightbulb">
+    <img src="https://example.com/path/to/your/lightbulb-image.png" alt="Lightbulb">
   </div>
 
-  <div class="container">
-    <h1>Test Page</h1>
-    <p>If you see this text, container is working. Behind should be a giant bulb.</p>
-    <p>Adding more text to make scroll:</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-    <p>Even more text...</p>
+  <div class="container" align="center">
+    <img class="profile-photo" src="your-photo.jpg" alt="Photo">
+    <h1>Anand Srinivasan</h1>
+    <p>Test paragraph 1</p>
+    <p>Test paragraph 2</p>
+    <p>Test paragraph 3</p>
   </div>
 </body>
 </html>
