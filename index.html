@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Anand Srinivasan | About Me</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
@@ -15,33 +15,43 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
       background-size: 200% 200%;
-      animation: backgroundShift 10s ease infinite;
+      animation: bgPulse 10s ease-in-out infinite alternate;
       color: #f0f4f8;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      overflow-y: auto;  /* allow vertical scrolling */
+      overflow-y: auto;
       position: relative;
       min-height: 100vh;
     }
 
-    @keyframes backgroundShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes bgPulse {
+      0% {
+        background-position: 0% 0%;
+        /* dark */
+        filter: brightness(0.8);
+      }
+      50% {
+        background-position: 50% 50%;
+        filter: brightness(1.2);
+      }
+      100% {
+        background-position: 100% 100%;
+        filter: brightness(0.9);
+      }
     }
 
-    /* Huge lightbulb watermark behind content */
+    /* watermark bulb behind everything */
     .lightbulb {
-      position: absolute;
+      position: fixed; /* fixed so it stays in place */
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 12000px;      /* very large so it looms behind */
+      width: 1500px;   /* very large */
       height: auto;
-      opacity: 0.2;        /* adjust so it’s visible but not overpowering */
+      opacity: 0.15;   /* low so it doesn’t overpower */
       z-index: 0;
       pointer-events: none;
     }
@@ -49,25 +59,25 @@
     .lightbulb img {
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 0 100px rgba(255, 255, 200, 0.8))
-              drop-shadow(0 0 200px rgba(255, 255, 200, 0.5));
+      filter: drop-shadow(0 0 100px rgba(255, 255, 200, 0.7))
+              drop-shadow(0 0 200px rgba(255, 255, 200, 0.4));
       animation: bulbGlow 8s ease-in-out infinite alternate;
     }
 
     @keyframes bulbGlow {
       from {
-        filter: drop-shadow(0 0 80px rgba(255,255,200,0.6))
-                drop-shadow(0 0 160px rgba(255,255,200,0.3));
+        filter: drop-shadow(0 0 80px rgba(255, 255, 200, 0.6))
+               drop-shadow(0 0 160px rgba(255, 255, 200, 0.3));
       }
       to {
-        filter: drop-shadow(0 0 140px rgba(255,255,220,1))
-                drop-shadow(0 0 280px rgba(255,255,220,0.6));
+        filter: drop-shadow(0 0 160px rgba(255, 255, 220, 1))
+               drop-shadow(0 0 320px rgba(255, 255, 220, 0.5));
       }
     }
 
     .container {
       position: relative;
-      background: rgba(17, 24, 39, 0.6);  /* more transparent so bulb shows through */
+      background: rgba(17, 24, 39, 0.55); /* fairly transparent */
       border-radius: 20px;
       padding: 40px;
       margin: 80px 20px;
@@ -76,7 +86,7 @@
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       transition: transform 0.25s ease;
-      z-index: 1;
+      z-index: 1; /* above the bulb */
     }
 
     .container:hover {
@@ -124,18 +134,15 @@
       .container {
         padding: 24px;
       }
-
       .profile-photo {
         width: 100px;
         height: 100px;
       }
-
       h1 {
         font-size: 1.8rem;
       }
-
       .lightbulb {
-        width: 800px;  /* still large on mobile, but less extreme */
+        width: 1000px; /* still large but manageable on mobile */
       }
     }
   </style>
@@ -161,17 +168,15 @@
       Outside of research, I love to travel and engage with diverse communities — every trip offers new perspectives that influence how I think about AI’s role in society. I'm excited about opportunities like Stanford because they offer the rigor, vision, and community to grow this mission.
     </p>
 
-    <!-- Additional paragraphs you’ll add later -->
+    <!-- Additional placeholders -->
     <p>[Paragraph 4 placeholder]</p>
     <p>[Paragraph 5 placeholder]</p>
     <p>[Paragraph 6 placeholder]</p>
 
     <div class="links">
       <a href="https://github.com/Anand-S2004" target="_blank">GitHub</a>
-      <!-- Add LinkedIn / resume links if you want -->
+      <!-- LinkedIn / resume etc -->
     </div>
   </div>
 </body>
 </html>
-
-
