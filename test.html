@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Bulb Background</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    body {
+      position: relative;
+      overflow-y: auto;
+      background: #101010; /* dark background so bulb shows well */
+    }
+    .lightbulb {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1200px;
+      opacity: 0.3;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .lightbulb img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 100px rgba(255, 255, 200, 0.7))
+             drop-shadow(0 0 200px rgba(255, 255, 200, 0.4));
+    }
+    .container {
+      position: relative;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 50px;
+      margin: 100px;
+      max-width: 600px;
+      z-index: 1;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="lightbulb">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAABkklEQVR4Ae3Z0VGDQBBA4YeIZoDKQaR9DiomJ6KIq2JzRClL0DFEsDjF3Em0lN8Mt/Yg7wm61d96eHbkfXW+/77s9//3YZmZmZmZmZmZnYxwkrffcE+RvhG+E74RvgW+EX4Rvgk+Bb4R/ngGeBy4K/ARGVBrgEPAY4BnATuBm4DrgInAjcBbgLuA14D/CT8PPeAjsL3r+enyAzgQ3AG+Br4Evgq+Cb4MPgm+C74MLgv+C+4FrgQuAz4J3gb+A46H/IB2AX4BvgN+BzYG3AIuAacBrgG3gXuBr4EvgSuAbcB7gR+Ar4FHgH+Ar4FjgLeBN4JN4XPgX+CD4Q/gP+AD4APgI/AH8APgE+A/4AN43Gm8Bi4Hbgb2Ab+K3AO+E3wPvD/4IPgL+Aj4GnQT8AH4CBwKPBY4GnAQ+BDwHPAQ+APwEPgQeAP4EHgQ+BD4APgQ+BD4EPgQ+BP0BrAF4CbwLLAakD+A84JHwEfAQcBDwHPAQ+BD4ENgW+Bh4FvgX+WHYHHqk1FVLlihTpQs0U6ULMFGlCzBRpQs0U6ULMGSlCzBRpQs0U6ULMGlCzBRpQs0U6ULMGlCzBRpQs0U6ULMGlCzBRpQs0U6ULMGlCz8HtR2rXIJMd0xAAAAAASUVORK5CYII=" alt="Lightbulb">
+  </div>
+
+  <div class="container">
+    <h1>Test Page</h1>
+    <p>If you see this text, container is working. Behind should be a giant bulb.</p>
+    <p>Adding more text to make scroll:</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <p>Even more text...</p>
+  </div>
+</body>
+</html>
