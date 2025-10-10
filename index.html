@@ -41,7 +41,7 @@
       transform: translate(-50%, -50%);
       width: 300px;
       opacity: 0.3;
-      z-index: 0;
+      z-index: -1; /* Ensure it's behind the content */
       pointer-events: none;
     }
 
@@ -74,8 +74,7 @@
       box-shadow: 0 8px 40px rgba(0,0,0,0.7);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      transition: transform 0.25s ease;
-      z-index: 1;
+      z-index: 1; /* Ensure it's above the lightbulb */
     }
 
     .container:hover {
