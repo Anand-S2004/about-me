@@ -1,182 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Anand Srinivasan | About Me</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    <meta charset="UTF-8">
+    <title>Anand Srinivasan | About Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
-      background-size: 200% 200%;
-      animation: bgPulse 10s ease-in-out infinite alternate;
-      color: #f0f4f8;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow-y: auto;
-      position: relative;
-      min-height: 100vh;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+            background-size: 200% 200%;
+            animation: bgPulse 10s ease-in-out infinite alternate;
+            color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-y: auto;
+            position: relative;
+            min-height: 100vh;
+        }
 
-    @keyframes bgPulse {
-      0% {
-        background-position: 0% 0%;
-        /* dark */
-        filter: brightness(0.8);
-      }
-      50% {
-        background-position: 50% 50%;
-        filter: brightness(1.2);
-      }
-      100% {
-        background-position: 100% 100%;
-        filter: brightness(0.9);
-      }
-    }
+        @keyframes bgPulse {
+            0% {
+                filter: brightness(0.8);
+            }
 
-    /* watermark bulb behind everything */
-    .lightbulb {
-      position: fixed; /* fixed so it stays in place */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 1500px;   /* very large */
-      height: auto;
-      opacity: 0.15;   /* low so it doesn’t overpower */
-      z-index: 0;
-      pointer-events: none;
-    }
+            50% {
+                filter: brightness(1.2);
+            }
 
-    .lightbulb img {
-      width: 100%;
-      height: auto;
-      filter: drop-shadow(0 0 100px rgba(255, 255, 200, 0.7))
-              drop-shadow(0 0 200px rgba(255, 255, 200, 0.4));
-      animation: bulbGlow 8s ease-in-out infinite alternate;
-    }
+            100% {
+                filter: brightness(0.9);
+            }
+        }
 
-    @keyframes bulbGlow {
-      from {
-        filter: drop-shadow(0 0 80px rgba(255, 255, 200, 0.6))
-               drop-shadow(0 0 160px rgba(255, 255, 200, 0.3));
-      }
-      to {
-        filter: drop-shadow(0 0 160px rgba(255, 255, 220, 1))
-               drop-shadow(0 0 320px rgba(255, 255, 220, 0.5));
-      }
-    }
+        .lightbulb {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1200px;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    .container {
-      position: relative;
-      background: rgba(17, 24, 39, 0.55); /* fairly transparent */
-      border-radius: 20px;
-      padding: 40px;
-      margin: 80px 20px;
-      max-width: 850px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.7);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      transition: transform 0.25s ease;
-      z-index: 1; /* above the bulb */
-    }
+        .lightbulb img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 100px rgba(255, 255, 200, 0.7)) drop-shadow(0 0 200px rgba(255, 255, 200, 0.4));
+            animation: bulbGlow 8s ease-in-out infinite alternate;
+        }
 
-    .container:hover {
-      transform: translateY(-6px);
-    }
+        @keyframes bulbGlow {
+            from {
+                filter: drop-shadow(0 0 80px rgba(255, 255, 200, 0.6)) drop-shadow(0 0 160px rgba(255, 255, 200, 0.3));
+            }
 
-    .profile-photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #4f46e5;
-      box-shadow: 0 0 15px rgba(79, 70, 229, 0.7);
-      margin-bottom: 20px;
-    }
+            to {
+                filter: drop-shadow(0 0 160px rgba(255, 255, 220, 1)) drop-shadow(0 0 320px rgba(255, 255, 220, 0.5));
+            }
+        }
 
-    h1 {
-      font-size: 2.6rem;
-      margin: 12px 0;
-      color: #ffffff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    }
+        .container {
+            position: relative;
+            background: rgba(17, 24, 39, 0.5);
+            /* more transparent */
+            border-radius: 20px;
+            padding: 40px;
+            margin: 80px 20px;
+            max-width: 850px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.25s ease;
+            z-index: 1;
+        }
 
-    p {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      margin-bottom: 22px;
-      color: #d1d5db;
-    }
+        .container:hover {
+            transform: translateY(-6px);
+        }
 
-    .links a {
-      text-decoration: none;
-      color: #60a5fa;
-      font-weight: 600;
-      margin-right: 24px;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
+        .profile-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #4f46e5;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.7);
+            margin-bottom: 20px;
+        }
 
-    .links a:hover {
-      color: #93c5fd;
-      text-shadow: 0 0 6px rgba(147,197,253,0.8);
-    }
+        h1 {
+            font-size: 2.6rem;
+            margin: 12px 0;
+            color: #ffffff;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 24px;
-      }
-      .profile-photo {
-        width: 100px;
-        height: 100px;
-      }
-      h1 {
-        font-size: 1.8rem;
-      }
-      .lightbulb {
-        width: 1000px; /* still large but manageable on mobile */
-      }
-    }
-  </style>
+        p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 22px;
+            color: #d1d5db;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #60a5fa;
+            font-weight: 600;
+            margin-right: 24px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #93c5fd;
+            text-shadow: 0 0 6px rgba(147, 197, 253, 0.8);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px;
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .lightbulb {
+                width: 800px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="lightbulb">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Light-bulb.png/459px-Light-bulb.png" alt="Lightbulb">
-  </div>
-
-  <div class="container" align="center">
-    <img class="profile-photo" src="your-photo.jpg" alt="Anand Srinivasan Photo">
-    <h1>Anand Srinivasan</h1>
-
-    <p>
-      I'm an avid researcher passionate about implementing scalable AI/ML solutions that make a real-world impact. My main focus has been on anomaly detection — a domain where subtle patterns and data deviations can signal critical insights in fields like cybersecurity, finance, and systems monitoring.
-    </p>
-
-    <p>
-      What fuels my curiosity is not just the algorithms themselves, but how they intersect with human behavior and decision-making. I'm currently pursuing an algorithmic patent and enjoy exploring both theoretical and applied research. I believe in building systems that are not just accurate, but interpretable and ethical.
-    </p>
-
-    <p>
-      Outside of research, I love to travel and engage with diverse communities — every trip offers new perspectives that influence how I think about AI’s role in society. I'm excited about opportunities like Stanford because they offer the rigor, vision, and community to grow this mission.
-    </p>
-
-    <!-- Additional placeholders -->
-    <p>[Paragraph 4 placeholder]</p>
-    <p>[Paragraph 5 placeholder]</p>
-    <p>[Paragraph 6 placeholder]</p>
-
-    <div class="links">
-      <a href="https://github.com/Anand-S2004" target="_blank">GitHub</a>
-      <!-- LinkedIn / resume etc -->
+    <div class="lightbulb">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAABkklEQVR4Ae3Z0VGDQBBA4YeIZoDKQaR9DiomJ6KIq2JzRClL0DFEsDjF3Em0lN8Mt/Yg7wm61d96eHbkfXW+/77s9//3YZmZmZmZmZmZnYxwkrffcE+RvhG+E74RvgW+EX4Rvgk+Bb4R/ngGeBy4K/ARGVBrgEPAY4BnATuBm4DrgInAjcBbgLuA14D/CT8PPeAjsL3r+enyAzgQ3AG+Br4Evgq+Cb4MPgm+C74MLgv+C+4FrgQuAz4J3gb+A46H/IB2AX4BvgN+BzYG3AIuAacBrgG3gXuBr4EvgSuAbcB7gR+Ar4FHgH+Ar4FjgLeBN4JN4XPgX+CD4Q/gP+AD4APgI/AH8APgE+A/4AN43Gm8Bi4Hbgb2Ab+K3AO+E3wPvD/4IPgL+Aj4GnQT8AH4CBwKPBY4GnAQ+BDwHPAQ+APwEPgQeAP4EHgQ+BD4APgQ+BD4EPgQ+BP0BrAF4CbwLLAakD+A84JHwEfAQcBDwHPAQ+BD4ENgW+Bh4FvgX+WHYHHqk1FVLlihTpQs0U6ULMFGlCzBRpQs0U6ULMGSlCzBRpQs0U6ULMGlCzBRpQs0U6ULMGlCzBRpQs0U6ULMGlCzBRpQs0U6ULMGlCz8HtR2rXIJMd0xAAAAAASUVORK5CYII="
+            alt="Lightbulb">
     </div>
-  </div>
+
+    <div class="container" align="center">
+        <img class="profile-photo" src="your-photo.jpg" alt="Anand Srinivasan Photo">
+        <h1>Anand Srinivasan</h1>
+
+        <p>
+            I'm an avid researcher passionate about implementing scalable AI/ML solutions that make a real-world impact.
+            My main focus has been on anomaly detection — a domain where subtle patterns and data deviations can signal
+            critical insights in fields like cybersecurity, finance, and systems monitoring.
+        </p>
+
+        <p>
+            What fuels my curiosity is not just the algorithms themselves, but how they intersect with human behavior
+            and decision-making. I'm currently pursuing an algorithmic patent and enjoy exploring both theoretical and
+            applied research. I believe in building systems that are not just accurate, but interpretable and ethical.
+        </p>
+
+        <p>
+            Outside of research, I love to travel and engage with diverse communities — every trip offers new
+            perspectives that influence how I think about AI’s role in society. I'm excited about opportunities like
+            Stanford because they offer the rigor, vision, and community to grow this mission.
+        </p>
+
+        <!-- placeholder paragraphs -->
+        <p>[Paragraph 4 placeholder]</p>
+        <p>[Paragraph 5 placeholder]</p>
+        <p>[Paragraph 6 placeholder]</p>
+
+        <div class="links">
+            <a href="https://github.com/Anand-S2004" target="_blank">GitHub</a>
+        </div>
+    </div>
 </body>
+
 </html>
