@@ -11,35 +11,73 @@
       margin: 0;
       padding: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
+      background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+      background-size: 200% 200%;
+      animation: backgroundShift 20s ease infinite;
       color: #f0f4f8;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      position: relative;
+      overflow: hidden;
     }
 
-    @keyframes gradientShift {
+    @keyframes backgroundShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
+    /* Glowing brain/lightbulb-like effect */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(79,70,229,0.7), transparent 70%);
+      border-radius: 50%;
+      top: -200px;
+      right: -200px;
+      filter: blur(150px);
+      animation: pulse 8s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(34,197,94,0.6), transparent 70%);
+      border-radius: 50%;
+      bottom: -180px;
+      left: -180px;
+      filter: blur(140px);
+      animation: pulse 10s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
     .container {
-      background: rgba(24, 28, 37, 0.85);
-      border-radius: 16px;
+      position: relative;
+      background: rgba(17, 24, 39, 0.85); /* dark glassy box */
+      border-radius: 20px;
       padding: 40px;
-      max-width: 800px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.2s ease;
+      max-width: 850px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.25s ease;
+      z-index: 1;
     }
 
     .container:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
     }
 
     .profile-photo {
@@ -48,38 +86,40 @@
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #4f46e5;
-      box-shadow: 0 0 12px rgba(79, 70, 229, 0.6);
+      box-shadow: 0 0 15px rgba(79, 70, 229, 0.7);
       margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 2.4rem;
-      margin: 10px 0;
+      font-size: 2.6rem;
+      margin: 12px 0;
       color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       line-height: 1.8;
-      margin-bottom: 20px;
-      color: #cbd5e1;
+      margin-bottom: 22px;
+      color: #d1d5db;
     }
 
     .links a {
       text-decoration: none;
       color: #60a5fa;
       font-weight: 600;
-      margin-right: 20px;
-      transition: color 0.3s ease;
+      margin-right: 24px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
     .links a:hover {
       color: #93c5fd;
+      text-shadow: 0 0 6px rgba(147,197,253,0.8);
     }
 
     @media (max-width: 600px) {
       .container {
-        padding: 20px;
+        padding: 24px;
       }
 
       .profile-photo {
@@ -88,7 +128,7 @@
       }
 
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -109,6 +149,11 @@
     <p>
       Outside of research, I love to travel and engage with diverse communities — every trip offers new perspectives that influence how I think about AI’s role in society. I'm excited about opportunities like Stanford because they offer the rigor, vision, and community to grow this mission.
     </p>
+
+    <!-- Placeholder for 3 more paragraphs -->
+    <p>[Paragraph 4 placeholder — you can fill in later]</p>
+    <p>[Paragraph 5 placeholder — you can fill in later]</p>
+    <p>[Paragraph 6 placeholder — you can fill in later]</p>
 
     <div class="links">
       <a href="https://github.com/Anand-S2004" target="_blank">GitHub</a>
