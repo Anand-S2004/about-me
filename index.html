@@ -14,7 +14,7 @@
       background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
       background-size: 200% 200%;
       animation: backgroundShift 10s ease infinite;
-      overflow-y: auto; /* allow scrolling */
+      overflow-y: auto; /* normal scrolling */
     }
 
     @keyframes backgroundShift {
@@ -53,19 +53,22 @@
       margin-bottom: 22px;
     }
 
+    /* 🟢 FIXED LIGHTBULB SHRINKING ISSUE */
     .lightbulb {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 2000px;
-      opacity: 0.3;
+      max-width: 85vw;     /* fits screen */
+      max-height: 85vh;
+      opacity: 0.25;
       z-index: 0;
       pointer-events: none;
     }
 
     .lightbulb img {
       width: 100%;
+      height: auto;
       filter: drop-shadow(0 0 60px rgba(255,255,200,0.8))
               drop-shadow(0 0 120px rgba(255,255,200,0.5));
       animation: bulbGlow 6s ease-in-out infinite alternate;
