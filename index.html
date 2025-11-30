@@ -4,20 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anand Srinivasan | About Me</title>
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       color: #fff;
       background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
       background-size: 200% 200%;
       animation: backgroundShift 10s ease infinite;
-
-      /* FIX: allow scrolling, remove centering lock */
-      display: block;
-      overflow-y: auto;
+      overflow-y: auto; /* allow scrolling */
     }
 
     @keyframes backgroundShift {
@@ -27,41 +24,41 @@
     }
 
     .container {
-      position: relative;
       max-width: 850px;
       width: 100%;
       padding: 40px;
-      margin: 60px auto; /* centered without flexbox */
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+      margin: 60px auto;
       border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.7);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      z-index: 1;
-      background-color: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      background-color: rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
       text-align: center;
     }
 
-    .container h1, .container p {
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    h1, p {
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     }
 
-    .container h1 {
+    h1 {
       font-size: 2.6rem;
       margin: 12px 0;
     }
 
-    .container p {
+    p {
       font-size: 1.15rem;
       line-height: 1.8;
       margin-bottom: 22px;
     }
 
     .lightbulb {
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 3000px;
+      width: 2000px;
       opacity: 0.3;
       z-index: 0;
       pointer-events: none;
@@ -69,9 +66,8 @@
 
     .lightbulb img {
       width: 100%;
-      height: auto;
-      filter: drop-shadow(0 0 60px rgba(255, 255, 200, 0.8))
-              drop-shadow(0 0 120px rgba(255, 255, 200, 0.5));
+      filter: drop-shadow(0 0 60px rgba(255,255,200,0.8))
+              drop-shadow(0 0 120px rgba(255,255,200,0.5));
       animation: bulbGlow 6s ease-in-out infinite alternate;
     }
 
@@ -87,33 +83,20 @@
     }
 
     .links a {
-      text-decoration: none;
       color: #60a5fa;
       font-weight: 600;
+      text-decoration: none;
       margin-right: 24px;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
+      transition: 0.3s ease;
     }
 
     .links a:hover {
       color: #93c5fd;
       text-shadow: 0 0 6px rgba(147,197,253,0.8);
     }
-
-    @media (max-width: 600px) {
-      .container {
-        padding: 24px;
-      }
-
-      .lightbulb {
-        width: 180px;
-      }
-
-      .container h1 {
-        font-size: 1.8rem;
-      }
-    }
   </style>
 </head>
+
 <body>
 
   <div class="lightbulb">
@@ -121,42 +104,52 @@
   </div>
 
   <div class="container">
+
     <h1>Anand Srinivasan</h1>
 
     <p>
-      I'm an avid researcher passionate about implementing scalable AI/ML solutions that make a real-world impact. My main focus has been on anomaly detection — 
-        a domain where subtle patterns and data deviations can signal critical insights in fields like cybersecurity, finance, and systems monitoring.
-      Why Anomaly Detection and not other "hot" fields like NLP and Generative AI? Well I'm personally of the opinion that saving resources is as important as gaining them. 
-      And disastrous events that could end up being costly to the unprepared entity? Completely preventable! Ranging from projects in Malware analysis with GNNs an OCSVM embeddins 
-      to protect devices against zero day attacks to privacy preserving federated learning models for attestation of IoT devices, I have discovered different aspects of security and their importance.
-      On the way, I also developed a novel cryptographic algorithm using geometry based approaches for resource constrained IoT devices, which is currently under patent review, and has potential use cases in spatial cryptography. 
+      I'm an avid researcher passionate about implementing scalable AI/ML solutions that make a real-world impact. 
+      My main focus has been on anomaly detection — a domain where subtle patterns and data deviations can signal 
+      critical insights in fields like cybersecurity, finance, and systems monitoring.
+      Why Anomaly Detection and not other "hot" fields like NLP and Generative AI? 
+      Well I'm personally of the opinion that saving resources is as important as gaining them. 
+      And disastrous events that could end up being costly to the unprepared entity? Completely preventable!
+      Ranging from projects in Malware analysis with GNNs and OCSVM embeddings to protect devices against zero-day attacks, 
+      to privacy-preserving federated learning models for attestation of IoT devices — I have discovered different aspects of security 
+      and their importance.
+      On the way, I also developed a novel cryptographic algorithm using geometry-based approaches for resource-constrained IoT devices, 
+      which is currently under patent review and has potential use cases in spatial cryptography.
       <span class="links">
         <a href="https://ieeexplore.ieee.org/document/11173351/" target="_blank">Here</a>
       </span>
     </p>
 
     <p>
-      What fuels my curiosity is not just the algorithms themselves, but how they intersect with human behavior and decision-making. That is, after all why we're here, is it not? 
-      To use ML methods as a tool to quickly understand patterns that we simply do not have the capability to compute on our own.
-      This is why I believe in building systems that are not just accurate, but interpretable too.
-      My interactions with my professors at BITS-Hyderabad has also left me informed of the dangerous potential AI could have in the wrong hands.
-      And I am here to try and build ethical failsafes against such scenarios! I am currently involved in multiple projects, including recursive clustering based causality, hybrid anomaly detection frameworks and a neural distortion based interpretable anomaly detection framework. 
-      Looking forward to update it on my GIT soon!
+      What fuels my curiosity is not just the algorithms themselves, but how they intersect with human behavior and decision-making. 
+      That is, after all, why we're here — to use ML methods as a tool to quickly understand patterns that we simply do not have the capability 
+      to compute on our own. This is why I believe in building systems that are not just accurate, but interpretable too.
+      My interactions with my professors at BITS Hyderabad have also made me aware of the dangerous potential AI could have in the wrong hands. 
+      I am here to build ethical failsafes against such scenarios!
+      I am currently involved in multiple projects, including recursive clustering-based causality, hybrid anomaly detection frameworks, 
+      and a neural distortion–based interpretable anomaly detection framework.
+      Looking forward to updating all of it on my Git soon!
     </p>
 
     <p>
-      What fuels my curiosity is not just the algorithms themselves, but how they intersect with human behavior and decision-making. 
-      That is, after all why we're here, is it not? To use ML methods as a tool to quickly understand patterns that we simply do not 
-      have the capability to compute on our own. This is why I believe in building systems that are not just accurate, but interpretable too.
-      My interactions with my professors at BITS-Hyderabad has also left me informed of the dangerous potential AI could have in the wrong hands.
-      And I am here to try and build ethical failsafes against such scenarios! I am currently involved in multiple projects, including recursive clustering
-      based causality, hybrid anomaly detection frameworks and a neural distortion based interpretable anomaly detection framework.
-      Looking forward to update it on my GIT soon!
+      On the fun side, I enjoy penning down my thoughts, singing, playing outdoor sports like basketball and football, and long-distance running. 
+      I am also an athlete and have competed in international Wushu competitions, even bagging silver at the Malaysia International Wushu Championship in 2018.
+      Outside of research, I love to travel and engage with diverse communities — every trip offers new perspectives that influence how I think 
+      about AI’s role in society.
+      I'm only just 21, and there is always more to discover. I travel to conferences as much as I can — sometimes as a presenter, sometimes as a student 
+      hunting for improvements in their next big projects. Every place I visit is an opportunity: a chance to network, review, and rethink with purpose.
+      I believe the places you go change you — and the amount you travel and learn determines your net positive change. 
+      But change you must.
     </p>
 
     <div class="links">
       <a href="https://github.com/Anand-S2004" target="_blank">GitHub</a>
     </div>
+
   </div>
 
 </body>
