@@ -11,12 +11,13 @@
       height: 100%;
       font-family: 'Arial', sans-serif;
       color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
       background-size: 200% 200%;
       animation: backgroundShift 10s ease infinite;
+
+      /* FIX: allow scrolling, remove centering lock */
+      display: block;
+      overflow-y: auto;
     }
 
     @keyframes backgroundShift {
@@ -30,13 +31,14 @@
       max-width: 850px;
       width: 100%;
       padding: 40px;
-      margin: 60px 20px;
+      margin: 60px auto; /* centered without flexbox */
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
       border-radius: 20px;
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       z-index: 1;
       background-color: transparent;
+      text-align: center;
     }
 
     .container h1, .container p {
@@ -68,16 +70,19 @@
     .lightbulb img {
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 0 60px rgba(255, 255, 200, 0.8)) drop-shadow(0 0 120px rgba(255, 255, 200, 0.5));
+      filter: drop-shadow(0 0 60px rgba(255, 255, 200, 0.8))
+              drop-shadow(0 0 120px rgba(255, 255, 200, 0.5));
       animation: bulbGlow 6s ease-in-out infinite alternate;
     }
 
     @keyframes bulbGlow {
       from {
-        filter: drop-shadow(0 0 30px rgba(255,255,180,0.5)) drop-shadow(0 0 60px rgba(255,255,180,0.25));
+        filter: drop-shadow(0 0 30px rgba(255,255,180,0.5))
+                drop-shadow(0 0 60px rgba(255,255,180,0.25));
       }
       to {
-        filter: drop-shadow(0 0 80px rgba(255,255,210,0.9)) drop-shadow(0 0 160px rgba(255,255,210,0.6));
+        filter: drop-shadow(0 0 80px rgba(255,255,210,0.9))
+                drop-shadow(0 0 160px rgba(255,255,210,0.6));
       }
     }
 
@@ -110,38 +115,33 @@
   </style>
 </head>
 <body>
+
   <div class="lightbulb">
     <img src="https://png.pngtree.com/png-clipart/20210826/ourmid/pngtree-low-poly-wireframe-online-education-blue-light-bulb-png-image_3806606.jpg" alt="Lightbulb">
   </div>
 
-  <div class="container" align="center">
+  <div class="container">
     <h1>Anand Srinivasan</h1>
 
     <p>
-      I'm an avid researcher passionate about implementing scalable AI/ML solutions that make a real-world impact. My main focus has been on anomaly detection — a domain where subtle patterns and data deviations can signal critical insights in fields like cybersecurity, finance, and systems monitoring. Why Anomaly Detection and not other "hot" fields like NLP and Generative AI?
-      Well I'm personally of the opinion that saving resources is as important as gaining them. And disastrous events that could end up being costly to the unprepared entity? Completely preventable! Ranging from projects in Malware analysis with GNNs an OCSVM embeddins to protect devices against zero day attacks to privacy preserving federated learning models for attestation of 
-      IoT devices, I have discovered different aspects of security and their importance.
-      On the way, I also developed a novel cryptographic algorithm using geometry based approaches for resource constrained IoT devices, which is currently under patent review, and has potential use cases in spatial cryptography. 
-      <span class="links"><a href="https://ieeexplore.ieee.org/document/11173351/" target="_blank">Here</a></span>
+      I'm an avid researcher passionate about implementing scalable AI/ML solutions that make a real-world impact...
+      <span class="links">
+        <a href="https://ieeexplore.ieee.org/document/11173351/" target="_blank">Here</a>
+      </span>
     </p>
 
     <p>
-      What fuels my curiosity is not just the algorithms themselves, but how they intersect with human behavior and decision-making. That is, after all why we're here, is it not? To use ML methods as a tool to quickly understand patterns that we simply do not have the capability to compute on our own. This is why I believe in building systems that are not just accurate, but interpretable too.
-      My interactions with my professors at BITS-Hyderabad has also left me informed of the dangerous potential AI could have in the wrong hands. And I am here to try and build ethical failsafes against such scenarios!
-      I am currently involved in multiple projects, including recursive clustering based causality, hybrid anomaly detection frameworks and a neural distortion based interpretable anomaly detection framework.
-      Looking forward to update it on my GIT soon!
+      What fuels my curiosity is not just the algorithms themselves...
     </p>
 
     <p>
-      On the fun side, I enjoy penning down my thoughts, singing, playing outdoor sports like basketball, football and long distance running. I am also an athlete, and have competed in international wushu competitions, even bagging silver at the Malaysia International Wushu Competition in 2018.
-      Outside of research, I love to travel and engage with diverse communities — every trip offers new perspectives that influence how I think about AI’s role in society. I'm only just 21, and there is always more to discover. I travel to conferences as much as I can, sometimes as a presenter, and sometimes as a student hunting for improvements in their next big projects.
-      Every place I travel to is an opportunity, a chance to network, review and rethink with purpose. I believe the places that go will change you, and the amount you travel and learn decides your net positive change. But change you must. 
-     
+      On the fun side, I enjoy penning down my thoughts...
     </p>
 
     <div class="links">
       <a href="https://github.com/Anand-S2004" target="_blank">GitHub</a>
     </div>
   </div>
+
 </body>
 </html>
