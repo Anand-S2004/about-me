@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anand (Anu) Srinivasan | CS Researcher & Systems Builder</title>
+    <meta name="description" content="Portfolio of Anand Srinivasan. Computer Science Researcher at UNC Chapel Hill specializing in Hyperspherical Foliation, Anti-Cyclic Combat RL, Continual MLSys, and Streaming Agents.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#07090e',
+                        cardBg: '#0d1321',
+                        borderMuted: '#1e293b',
+                        cyanAccent: '#38bdf8',
+                        indigoAccent: '#6366f1',
+                        violetAccent: '#a855f7',
+                        roseAccent: '#f43f5e',
+                        amberAccent: '#fbbf24'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- KaTeX for Mathematical Notations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
+
+    <!-- Custom Stylesheet with ReactBits-inspired micro-interactions -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#07090e] text-slate-100 selection:bg-indigo-500 selection:text-white relative min-h-screen">
+
+    <!-- Canvas Background: Hyperspherical Celestial Foliation & Optimal Transport Vector Flow -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Aurora Background Mesh (ReactBits style) -->
+    <div class="aurora-mesh">
+        <div class="aurora-orb-1"></div>
+        <div class="aurora-orb-2"></div>
+        <div class="aurora-orb-3"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#07090e]/75 border-b border-slate-800/80 transition-all">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand / Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-cyan-500 to-pink-500 p-[1.5px] transition-transform duration-300 group-hover:scale-105">
+                    <div class="w-full h-full bg-[#07090e] rounded-[10px] flex items-center justify-center font-bold font-mono text-cyan-400 group-hover:text-white transition-colors">
+                        AS
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">Anand Srinivasan</span>
+                    <span class="text-xs text-slate-400 font-mono flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        UNC Chapel Hill CS
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+                <a href="#inspiration" class="hover:text-cyan-400 transition-colors">Inspiration</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#experiments" class="hover:text-cyan-400 transition-colors">Interactive Labs</a>
+                <a href="#publications" class="hover:text-cyan-400 transition-colors">Publications</a>
+                <a href="#about" class="hover:text-cyan-400 transition-colors">About & Toolkit</a>
+                <a href="#hobbies" class="hover:text-cyan-400 transition-colors">Hobbies</a>
+                <a href="#extracurriculars" class="hover:text-cyan-400 transition-colors">Leadership</a>
+            </nav>
+
+            <!-- Quick Action CTA & Canvas Mode Toggle -->
+            <div class="hidden sm:flex items-center gap-3">
+                <button id="toggle-canvas-mode" class="text-xs px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-600 transition-all flex items-center gap-2 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    Celestial Foliation
+                </button>
+                <a href="#contact" class="shiny-badge hover:scale-105 transition-transform">
+                    <span>Connect & Connect</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1.5 text-cyan-400"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-drawer" class="hidden md:hidden px-6 pb-6 pt-2 bg-[#07090e]/95 border-b border-slate-800 space-y-3 text-sm font-medium">
+            <a href="#inspiration" class="block py-2 text-slate-300 hover:text-cyan-400">Inspiration</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-cyan-400">Projects</a>
+            <a href="#experiments" class="block py-2 text-slate-300 hover:text-cyan-400">Interactive Labs</a>
+            <a href="#publications" class="block py-2 text-slate-300 hover:text-cyan-400">Publications</a>
+            <a href="#about" class="block py-2 text-slate-300 hover:text-cyan-400">About & Toolkit</a>
+            <a href="#hobbies" class="block py-2 text-slate-300 hover:text-cyan-400">Hobbies</a>
+            <a href="#extracurriculars" class="block py-2 text-slate-300 hover:text-cyan-400">Leadership</a>
+            <a href="#contact" class="block py-2 text-cyan-400">Get in Touch &rarr;</a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10 pt-28 space-y-36">
+
+        <!-- ==================================================== -->
+        <!-- 1. HERO SECTION                                      -->
+        <!-- ==================================================== -->
+        <section id="hero" class="max-w-7xl mx-auto px-6 pt-12 md:pt-20">
+            <div class="flex flex-col items-start gap-8 max-w-4xl">
+                <!-- Status Badges -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <span class="shiny-badge">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 pulse-glow-green"></span>
+                        CS Researcher & Systems Architect
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-950/70 text-indigo-300 border border-indigo-700/50">
+                        ⚡ University of North Carolina at Chapel Hill
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-mono bg-pink-950/70 text-pink-300 border border-pink-700/50">
+                        🌌 Physics & Geometry Grounded AI
+                    </span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1]">
+                    Translating <span class="gradient-text-rainbow decrypted-text" data-text="Physical Laws">Physical Laws</span> & Geometric Foliation into <span class="text-white">Living Systems.</span>
+                </h1>
+
+                <!-- Subtitle / Positioning statement -->
+                <p class="text-lg sm:text-xl text-slate-300 leading-relaxed font-light">
+                    I build creative, mathematically grounded machine learning architectures and real-time systems. My work draws inspiration from <strong class="text-cyan-300 font-normal">astronomical standard candles</strong> to compress high-dimensional vector spaces, <strong class="text-indigo-300 font-normal">game combat psychology</strong> to defeat strategy cycling, and <strong class="text-pink-300 font-normal">complex-valued differential geometry</strong> to separate deterministic signals from volatile chaos.
+                </p>
+
+                <!-- Action CTA Buttons -->
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold shadow-lg shadow-indigo-600/30 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all flex items-center gap-2">
+                        <span>Explore Creative Projects</span>
+                        <i data-lucide="sparkles" class="w-4 h-4 text-cyan-200"></i>
+                    </a>
+                    <a href="#experiments" class="px-6 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 hover:border-slate-500 text-slate-200 font-semibold hover:bg-slate-800 transition-all flex items-center gap-2">
+                        <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+                        <span>Launch Interactive Labs</span>
+                    </a>
+                    <button class="copy-email-btn px-5 py-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 transition-all flex items-center gap-2 font-mono text-sm" data-email="anandsr@cs.unc.edu">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>anandsr@cs.unc.edu</span>
+                    </button>
+                </div>
+
+                <!-- Quick Impact Stats Bar -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-8 border-t border-slate-800/80">
+                    <div class="spotlight-card p-4">
+                        <div class="text-2xl font-bold font-mono text-cyan-400">16x+</div>
+                        <div class="text-xs text-slate-400 mt-1">Embedding Compression via Foliation</div>
+                    </div>
+                    <div class="spotlight-card p-4">
+                        <div class="text-2xl font-bold font-mono text-indigo-400">NeurIPS</div>
+                        <div class="text-xs text-slate-400 mt-1">Zero-Rollback Streaming Paper</div>
+                    </div>
+                    <div class="spotlight-card p-4">
+                        <div class="text-2xl font-bold font-mono text-pink-400">&lt;10ms</div>
+                        <div class="text-xs text-slate-400 mt-1">Anti-Cyclic RL Combat Decision SLA</div>
+                    </div>
+                    <div class="spotlight-card p-4">
+                        <div class="text-2xl font-bold font-mono text-amber-400">5-Shock</div>
+                        <div class="text-xs text-slate-400 mt-1">Tensile Web Anomaly Attribution</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- 2. THE INSPIRATION MANIFESTO                         -->
+        <!-- ==================================================== -->
+        <section id="inspiration" class="max-w-7xl mx-auto px-6">
+            <div class="space-y-4 mb-12">
+                <span class="text-xs font-mono tracking-widest uppercase text-cyan-400 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    Philosophical DNA
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                    The Creative Sparks Behind the Code.
+                </h2>
+                <p class="text-slate-400 max-w-2xl">
+                    Every project in this repository began not as an incremental benchmark tweak, but as a conceptual translation between distinct intellectual universes.
+                </p>
+            </div>
+
+            <!-- The Matrix of Inspiration Cards (Spotlight Cards) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Inspiration 1: Astrophysics & Foliation -->
+                <div class="spotlight-card p-8 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-950/80 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                            <i data-lucide="telescope" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs font-mono text-cyan-400">Act I • The Celestial Sphere</span>
+                        <h3 class="text-xl font-bold text-white">Astrophysical Standard Candles</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            How do astronomers gauge distance across billions of light years? They separate intrinsic stellar luminosity (photometric flux) from celestial coordinates. I realized neural vector representations do the exact opposite: they treat vector magnitude and angle as an undifferentiated mess. This spark yielded <strong class="text-cyan-300">Project Milky Way</strong>.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between font-mono">
+                        <span>Inspired: Project Milky Way</span>
+                        <span class="text-cyan-400">&rarr; Hyperspherical Foliation</span>
+                    </div>
+                </div>
+
+                <!-- Inspiration 2: Combat Psychology & Anti-Cycles -->
+                <div class="spotlight-card p-8 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-rose-950/80 border border-rose-500/30 flex items-center justify-center text-rose-400">
+                            <i data-lucide="swords" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs font-mono text-rose-400">Act II • The Combat Psychology</span>
+                        <h3 class="text-xl font-bold text-white">The Myth of Artificial Difficulty</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            In modern gaming, bosses simulate difficulty by giving themselves 10,000,000 HP or reading controller inputs in 10ms. Once a player discovers an exploit loop ($A \to B \to C \to A$), the game breaks. I built <strong class="text-rose-300">Theseus' Foe</strong> so that bosses learn your psychological habits, forcing genuine tactical evolution rather than stat-checking.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between font-mono">
+                        <span>Inspired: Theseus' Foe</span>
+                        <span class="text-rose-400">&rarr; Anti-Cyclic Markov RL</span>
+                    </div>
+                </div>
+
+                <!-- Inspiration 3: Complex Plane & Phase Orthogonality -->
+                <div class="spotlight-card p-8 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                            <i data-lucide="compass" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs font-mono text-indigo-400">Act III • The Complex Plane</span>
+                        <h3 class="text-xl font-bold text-white">Orthogonality in the Complex Plane \(\mathbb{C}\)</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            When deep neural networks encounter regime shifts and market crashes, their gradients violently explode because trend and volatility fight for the same real-valued scalar weights. By lifting representations into the complex numbers (\(a + ib\)), the real component captures deterministic momentum while the imaginary component absorbs volatility spikes.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between font-mono">
+                        <span>Inspired: CV-OSNS</span>
+                        <span class="text-indigo-400">&rarr; Gradient Traffic Cop</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extended Inspiration Callout Strip -->
+            <div class="mt-8 spotlight-card p-8 border-l-4 border-l-amber-400">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    <div>
+                        <span class="text-xs font-mono text-amber-400 uppercase">Biomimicry & Spider Webs</span>
+                        <h4 class="text-lg font-bold text-white mt-1">SpiderNet Anomaly Detection</h4>
+                        <p class="text-xs text-slate-300 mt-2">
+                            A spider senses struggling prey across tens of thousands of intersections not with sight, but through vibrational harmonic stress waves traveling through tensile silk. We modeled multi-shock graph anomalies as tensile stress residuals across Wasserstein topologies.
+                        </p>
+                    </div>
+                    <div>
+                        <span class="text-xs font-mono text-emerald-400 uppercase">Classical Mechanics & Least Action</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Reduction Network (GTD)</h4>
+                        <p class="text-xs text-slate-300 mt-2">
+                            Hyperplane decision boundaries in Euclidean space are an uninspired hack. What if classification is viewed as physical kinetic action—the minimum energy required to transport a sample along neural vector fields to class prototype manifolds?
+                        </p>
+                    </div>
+                    <div>
+                        <span class="text-xs font-mono text-violet-400 uppercase">Embodied Reality & Time's Arrow</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Flux: Zero-Rollback NLP</h4>
+                        <p class="text-xs text-slate-300 mt-2">
+                            Transformers assume the universe allows infinite backward rewinds. But physical agents cannot un-speak words or un-drop fragile glasses. Flux bounds rational inference under zero-rollback irreversibility.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- 3. FEATURED CS PROJECTS                              -->
+        <!-- ==================================================== -->
+        <section id="projects" class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div class="space-y-3">
+                    <span class="text-xs font-mono tracking-widest uppercase text-cyan-400 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                        Architectures & Systems
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                        Creative Project Portfolio.
+                    </h2>
+                    <p class="text-slate-400 max-w-xl">
+                        Deep dives into the systems, mathematical formulations, and engineering architectures developed in this workspace.
+                    </p>
+                </div>
+
+                <!-- Filter Pills (ReactBits style) -->
+                <div class="flex flex-wrap gap-2 text-xs font-mono">
+                    <button class="filter-pill active px-4 py-2 rounded-full border border-slate-700 bg-slate-900 text-slate-300" data-filter="all">All (8)</button>
+                    <button class="filter-pill px-4 py-2 rounded-full border border-slate-700 bg-slate-900 text-slate-300" data-filter="geom">Geometry & DL</button>
+                    <button class="filter-pill px-4 py-2 rounded-full border border-slate-700 bg-slate-900 text-slate-300" data-filter="rl">RL & Games</button>
+                    <button class="filter-pill px-4 py-2 rounded-full border border-slate-700 bg-slate-900 text-slate-300" data-filter="sys">MLSys & Systems</button>
+                    <button class="filter-pill px-4 py-2 rounded-full border border-slate-700 bg-slate-900 text-slate-300" data-filter="nlp">NLP & Semantics</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
+
+                <!-- PROJECT 1: Project Milky Way -->
+                <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="geom sys">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">
+                                🌌 Astrophysics & Transform Coding
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">PyTorch • 16x Compression</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                            Project Milky Way: Hyperspherical Directional Codecs & Transverse Foliation
+                        </h3>
+
+                        <!-- Creative Spark Callout -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-cyan-300 font-semibold flex items-center gap-1.5">
+                                <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+                                The Creative Genesis:
+                            </strong>
+                            <p>
+                                Decomposes dense 768-dimensional language and visual embeddings into <em>photometric radial intensity</em> (scalar distance) and <em>hyperspherical directional bit-vectors</em>, inspired by celestial astrometry and differential foliation.
+                            </p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Compresses high-dimensional representations (BERT, GloVe, SOTA encoders) down to a fraction of their original footprint with near-zero loss in cosine similarity. Proves mathematically that orientation preserves semantic clustering while radial magnitude captures ontological depth.
+                        </p>
+
+                        <!-- Tech Specs & Features -->
+                        <div class="space-y-2 pt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Differential transverse foliation on \(\mathbb{S}^{D-1}\)</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Quantization fidelity &gt; 0.985 Cosine Similarity</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Apples-to-apples benchmark against standard vector quantizers</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                            <i data-lucide="folder" class="w-4 h-4 text-cyan-400"></i>
+                            <span>milky_way/</span>
+                        </div>
+                        <a href="#experiments" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                            <span>Test in Interactive Lab</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- PROJECT 2: Theseus' Foe -->
+                <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="rl">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-rose-950/80 text-rose-300 border border-rose-800/60">
+                                ⚔️ Adversarial RL & Game AI SDK
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Pygame • Unity Interop</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-rose-400 transition-colors">
+                            Theseus' Foe: Adaptive Combat Arena & Anti-Cyclic AI SDK
+                        </h3>
+
+                        <!-- Creative Spark Callout -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-rose-300 font-semibold flex items-center gap-1.5">
+                                <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+                                The Creative Genesis:
+                            </strong>
+                            <p>
+                                An enemy that observes player exploit cycles ($A \to B \to C \to A$) and continuously adapts. Defeats repetitive player tactics without artificial input reading or bloated health bars.
+                            </p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            A game-agnostic combat AI engine featuring an <em>AntiCyclicTracker</em> powered by empirical Markov state transitions. Seamlessly exports weights between Pygame and Unity engines with live telemetry sync, difficulty pacing curves, and persistent boss personality profiles.
+                        </p>
+
+                        <!-- Tech Specs & Features -->
+                        <div class="space-y-2 pt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Anti-cyclic Markov transition matrix with persistent counter memory</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Actor-Critic RL agent with dynamic combat posture switching</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Cloud telemetry synchronization & live weight serialization</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                            <i data-lucide="folder" class="w-4 h-4 text-rose-400"></i>
+                            <span>theseus_foe/</span>
+                        </div>
+                        <a href="#experiments" class="text-xs font-semibold text-rose-400 hover:text-rose-300 flex items-center gap-1">
+                            <span>Duel Boss in Lab</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- PROJECT 3: CV-OSNS -->
+                <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="geom sys">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-950/80 text-indigo-300 border border-indigo-800/60">
+                                📐 Complex-Valued Neural Networks
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Time-Series • Uncertainty</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">
+                            CV-OSNS: Complex-Valued Orthogonal Signal-Noise Separation
+                        </h3>
+
+                        <!-- Creative Spark Callout -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-indigo-300 font-semibold flex items-center gap-1.5">
+                                <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+                                The Creative Genesis:
+                            </strong>
+                            <p>
+                                Treating time series as numbers in \(\mathbb{C}\) (\(a + ib\)), creating a "gradient traffic cop" that forces deterministic trends onto \(\text{Re}\) and heteroscedastic volatility spikes onto \(\text{Im}\).
+                            </p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Dual-network deep learning architecture designed for severe regime shifts and non-stationary volatility. Tested against GARCH(1,1) synthetic processes and macro-financial shocks where standard real-valued forecasting networks suffer gradient explosion.
+                        </p>
+
+                        <!-- Tech Specs & Features -->
+                        <div class="space-y-2 pt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Orthogonal loss formulation preventing gradient contamination</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Master Defense Guide & rigorous mathematical proof package</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Heteroscedastic variance tracking without epistemic drift</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                            <i data-lucide="folder" class="w-4 h-4 text-indigo-400"></i>
+                            <span>complex/</span>
+                        </div>
+                        <a href="#experiments" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                            <span>Inspect Phase Plane</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- PROJECT 4: DriftLoop MLSys -->
+                <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="sys">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-amber-950/80 text-amber-300 border border-amber-800/60">
+                                ⚡ Continual Learning MLSys
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Sub-ms Tail Latency SLAs</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                            DriftLoop: Continuous Learning & Adaptation Serving System
+                        </h3>
+
+                        <!-- Creative Spark Callout -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-amber-300 font-semibold flex items-center gap-1.5">
+                                <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+                                The Creative Genesis:
+                            </strong>
+                            <p>
+                                Dismantling the 24-hour batch retraining paradigm by closing the loop between real-time non-stationary distribution shifts and sub-millisecond serving tail latency.
+                            </p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            A production-grade machine learning systems engine that continuously monitors deployed models, detects operating drift, selectively populates high-value replay buffers, evaluates candidate models in shadow mode, and promotes or rolls back updates with zero downtime.
+                        </p>
+
+                        <!-- Tech Specs & Features -->
+                        <div class="space-y-2 pt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Multi-objective Pareto frontier optimizer (Accuracy vs Latency)</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Shadow mode candidate evaluation with zero tail latency degradation</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Empirically verified on KDD Cup & high-frequency streams</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                            <i data-lucide="folder" class="w-4 h-4 text-amber-400"></i>
+                            <span>driftloop/ & ML_constr/</span>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400">Production Ready</span>
+                    </div>
+                </article>
+
+                <!-- PROJECT 5: SpiderNet / Insectkiller -->
+                <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="geom sys">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-950/80 text-purple-300 border border-purple-800/60">
+                                🕸️ Multi-Shock Graph Topology
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">TDA • 3D SpiderWeb</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">
+                            SpiderNet: Grounded Multi-Shock Anomaly Detection & Attribution
+                        </h3>
+
+                        <!-- Creative Spark Callout -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-purple-300 font-semibold flex items-center gap-1.5">
+                                <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+                                The Creative Genesis:
+                            </strong>
+                            <p>
+                                Modeled on the vibrational sensory architecture of arachnid silk webs. Decomposes system anomalies into 5 orthogonal physical shock vectors to pinpoint root causes.
+                            </p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Analyzes dynamic graph structures across 5 parallel shock dimensions: Latent Geometry, Gaussian Mixture Zone likelihood, Temporal Velocity, Wasserstein Topological Distance, and Causal Edge Residuals. Includes 3D SpiderWeb spatial visualization.
+                        </p>
+
+                        <!-- Tech Specs & Features -->
+                        <div class="space-y-2 pt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>5-dimensional orthogonal anomaly decomposition pipeline</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Wasserstein topological distance metrics on temporal manifolds</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Authored with Naveen Prabhu at UNC Chapel Hill</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                            <i data-lucide="folder" class="w-4 h-4 text-purple-400"></i>
+                            <span>insectkiller/</span>
+                        </div>
+                        <a href="#experiments" class="text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1">
+                            <span>Launch Shock Radar</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- PROJECT 6: Reduction Network (GTD) -->
+                <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="geom">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-800/60">
+                                🌊 Optimal Transport & Kinetic Action
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">PyTorch • Neural Vector Fields</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                            Reduction Network: Generative Transformation Distance (GTD)
+                        </h3>
+
+                        <!-- Creative Spark Callout -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-emerald-300 font-semibold flex items-center gap-1.5">
+                                <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+                                The Creative Genesis:
+                            </strong>
+                            <p>
+                                Replaces static Euclidean hyperplanes with continuous Optimal Transport line-integrals. Classifies samples by the physical kinetic energy needed to transform them into class manifolds.
+                            </p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            A non-convex, geometry-first classification framework that replaces flat softmax cross-entropy with parameterized neural velocity fields. Samples follow dynamical least action paths, solving manifold entanglement where linear classifiers fail.
+                        </p>
+
+                        <!-- Tech Specs & Features -->
+                        <div class="space-y-2 pt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Continuous line-integral action functional \(\int \frac{1}{2}\|v_\theta(x_t, t)\|^2 dt\)</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Robust against adversarial boundary attacks</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Geometry-first classification on non-convex manifolds</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                            <i data-lucide="folder" class="w-4 h-4 text-emerald-400"></i>
+                            <span>reduction_network/</span>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400">Geometry Research</span>
+                    </div>
+                </article>
+
+                <!-- PROJECT 7: Flux (Zero-Rollback Streaming Agents) -->
+                <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="nlp sys">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-950/80 text-blue-300 border border-blue-800/60">
+                                ⏳ NeurIPS Paper • Streaming Agents
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Bounded Rationality</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                            Flux: Bounded-Rational Streaming Inference under Zero-Rollback Constraints
+                        </h3>
+
+                        <!-- Creative Spark Callout -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-blue-300 font-semibold flex items-center gap-1.5">
+                                <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+                                The Creative Genesis:
+                            </strong>
+                            <p>
+                                Embraces the irreversible nature of real-world physical and conversational action. Solves the problem that agents cannot "rewind" external speech or robot manipulation.
+                            </p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Official codebase and reproducibility package for the NeurIPS paper. Tracks entity states chronologically under compute budget constraints, replacing traditional offline bidirectional global attention with bounded-rational streaming commitments.
+                        </p>
+
+                        <!-- Tech Specs & Features -->
+                        <div class="space-y-2 pt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Zero-rollback commitment boundary optimization</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>LitBank & streaming dialogue benchmark validation</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Formulated under sequential decision & bounded rationality theory</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                            <i data-lucide="folder" class="w-4 h-4 text-blue-400"></i>
+                            <span>coref/COREF_res/</span>
+                        </div>
+                        <a href="#publications" class="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
+                            <span>View Paper & BibTeX</span>
+                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- PROJECT 8: Consistency AI & Knowledge Bases -->
+                <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="nlp">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-teal-950/80 text-teal-300 border border-teal-800/60">
+                                🧠 Semantic Database & Temporal KGs
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Discourse Grounding</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white group-hover:text-teal-400 transition-colors">
+                            Consistency AI: The Intelligent Versioned Semantic Database
+                        </h3>
+
+                        <!-- Creative Spark Callout -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-teal-300 font-semibold flex items-center gap-1.5">
+                                <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+                                The Creative Genesis:
+                            </strong>
+                            <p>
+                                <em>"AI proposes. The database remembers. Humans commit."</em> Replaces brittle vector embeddings with persistent, versioned semantic propositions governed by temporal validity.
+                            </p>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Zero-hardcoding OpenIE engine that translates arbitrary natural language into canonical entities, predicates, and propositions. Preserves a complete provenance audit trail, detects inconsistencies as knowledge evolves over time, and compares KG vs text retrieval scaling.
+                        </p>
+
+                        <!-- Tech Specs & Features -->
+                        <div class="space-y-2 pt-2">
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Temporal scope validation & provenance lineage tracking</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Automated contradiction detection across document revisions</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                <span>Socio-temporal evaluation on MovieGraphs and LitBank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                            <i data-lucide="folder" class="w-4 h-4 text-teal-400"></i>
+                            <span>NLP_ptoj/ & socio-temp/</span>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400">Semantic Engine</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- 4. INTERACTIVE LABS & EXPERIMENTS                    -->
+        <!-- ==================================================== -->
+        <section id="experiments" class="max-w-7xl mx-auto px-6">
+            <div class="space-y-4 mb-12">
+                <span class="text-xs font-mono tracking-widest uppercase text-cyan-400 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    Playable Prototypes
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                    Interactive Algorithmic Labs.
+                </h2>
+                <p class="text-slate-400 max-w-2xl">
+                    Interact directly with the mathematical principles behind my work. Test foliation codecs, complex-plane signal decomposition, combat RL counter-adaptation, and 5-shock radar telemetry.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <!-- LAB 1: Milky Way Foliation Simulator -->
+                <div class="spotlight-card p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">Experiment 01 • Foliation</span>
+                            <span class="text-xs font-mono bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded border border-cyan-800">Milky Way Codec</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Hyperspherical Radial Intensity & Bit-Vector Projection</h3>
+                        <p class="text-xs text-slate-300 mb-6">
+                            Adjust embedding dimension and directional quantization bits to observe how celestial foliation preserves cosine similarity while drastically cutting storage.
+                        </p>
+
+                        <!-- Controls -->
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <label class="text-xs font-mono text-slate-400 block mb-1">
+                                    Dimension: <span id="mw-dim-val" class="text-cyan-300 font-bold">512</span>
+                                </label>
+                                <input type="range" id="mw-dim" min="128" max="1024" step="64" value="512" class="w-full accent-cyan-400 cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="text-xs font-mono text-slate-400 block mb-1">
+                                    Directional Bits: <span id="mw-bits-val" class="text-cyan-300 font-bold">4</span>
+                                </label>
+                                <input type="range" id="mw-bits" min="1" max="8" step="1" value="4" class="w-full accent-cyan-400 cursor-pointer">
+                            </div>
+                        </div>
+
+                        <!-- Live Canvas Display -->
+                        <div class="relative w-full h-48 bg-slate-950/80 rounded-xl border border-slate-800 flex items-center justify-center overflow-hidden">
+                            <canvas id="mw-canvas" width="380" height="190" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Live Metrics Strip -->
+                    <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-slate-800/80 text-center font-mono">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Compression Ratio</span>
+                            <span id="mw-compression-ratio" class="text-xl font-bold text-cyan-400">16.0x</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">Cosine Preservation</span>
+                            <span id="mw-cosine-sim" class="text-xl font-bold text-emerald-400">0.983</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAB 2: CV-OSNS Complex Plane Simulator -->
+                <div class="spotlight-card p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-indigo-400 uppercase tracking-wider">Experiment 02 • Complex Analysis</span>
+                            <span class="text-xs font-mono bg-indigo-950 text-indigo-300 px-2 py-0.5 rounded border border-indigo-800">CV-OSNS Engine</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Complex Plane Orthogonal Signal-Noise Separation</h3>
+                        <p class="text-xs text-slate-300 mb-6">
+                            Slide the volatility spike. Watch the "gradient traffic cop" absorb 100% of the heteroscedastic chaos in \(\text{Im}\), keeping the deterministic signal in \(\text{Re}\) perfectly stable.
+                        </p>
+
+                        <!-- Controls -->
+                        <div class="mb-6">
+                            <label class="text-xs font-mono text-slate-400 block mb-1">
+                                Heteroscedastic Noise Spike: <span id="cv-vol-val" class="text-indigo-300 font-bold">50%</span>
+                            </label>
+                            <input type="range" id="cv-volatility" min="0.05" max="1.0" step="0.05" value="0.5" class="w-full accent-indigo-400 cursor-pointer">
+                        </div>
+
+                        <!-- Live Canvas Display -->
+                        <div class="relative w-full h-48 bg-slate-950/80 rounded-xl border border-slate-800 flex items-center justify-center overflow-hidden">
+                            <canvas id="cv-canvas" width="380" height="190" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Live Metrics Strip -->
+                    <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-slate-800/80 text-center font-mono">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Signal Net Error (\(\text{Re}\))</span>
+                            <span id="cv-signal-error" class="text-xl font-bold text-cyan-400">0.014</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">Noise Net Volatility (\(\text{Im}\))</span>
+                            <span id="cv-noise-error" class="text-xl font-bold text-amber-400">0.725</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAB 3: Theseus' Foe Anti-Cyclic Combat AI Simulator -->
+                <div class="spotlight-card p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-rose-400 uppercase tracking-wider">Experiment 03 • Adversarial RL</span>
+                            <span class="text-xs font-mono bg-rose-950 text-rose-300 px-2 py-0.5 rounded border border-rose-800">Theseus' Foe</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Anti-Cyclic Markov Combat State Machine</h3>
+                        <p class="text-xs text-slate-300 mb-4">
+                            Attack the boss! If you fall into a repetitive loop (e.g. Slash &rarr; Slash &rarr; Heavy), the AI's Markov memory detects your cycle and counters you mercilessly.
+                        </p>
+
+                        <!-- Player Move Selector -->
+                        <div class="space-y-2 mb-4">
+                            <span class="text-xs font-mono text-slate-400">Choose your attack:</span>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                <button class="combat-move-btn px-2.5 py-2 rounded-lg bg-slate-800 hover:bg-indigo-600 text-xs font-semibold text-white transition-all text-center" data-move="Fast Slash">
+                                    ⚔️ Fast Slash
+                                </button>
+                                <button class="combat-move-btn px-2.5 py-2 rounded-lg bg-slate-800 hover:bg-indigo-600 text-xs font-semibold text-white transition-all text-center" data-move="Heavy Smash">
+                                    🔨 Heavy Smash
+                                </button>
+                                <button class="combat-move-btn px-2.5 py-2 rounded-lg bg-slate-800 hover:bg-indigo-600 text-xs font-semibold text-white transition-all text-center" data-move="Feint & Roll">
+                                    🌀 Feint & Roll
+                                </button>
+                                <button class="combat-move-btn px-2.5 py-2 rounded-lg bg-slate-800 hover:bg-indigo-600 text-xs font-semibold text-white transition-all text-center" data-move="Defensive Block">
+                                    🛡️ Block
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Combat Feedback Box -->
+                        <div class="p-4 rounded-xl bg-slate-950/90 border border-slate-800 space-y-2">
+                            <div class="flex items-center justify-between text-xs font-mono">
+                                <span class="text-slate-400">Boss Evolved Counter:</span>
+                                <span id="boss-action-display" class="font-bold text-rose-400">Adaptive Stance Shift</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs font-mono">
+                                <span class="text-slate-400">AI Predicted Player Next Move:</span>
+                                <span id="ai-predicted-move" class="font-bold text-cyan-300">Fast Slash</span>
+                            </div>
+                            <div class="text-xs font-mono text-slate-400 pt-1">
+                                <span>Recent Tactics History:</span>
+                                <div id="player-history-display" class="flex flex-wrap gap-1.5 mt-1.5">
+                                    <span class="text-xs text-slate-500 italic">No actions registered yet. Click an attack above!</span>
+                                </div>
+                            </div>
+                            <div id="combat-status-text" class="text-xs text-cyan-400 mt-2 font-mono">
+                                ⚡ Boss is monitoring tactical entropy...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Metrics Strip -->
+                    <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-slate-800/80 text-center font-mono">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Exploit Cycle Detection</span>
+                            <span id="ai-exploit-score" class="text-xl font-bold text-rose-400">25%</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">Input Reading Cheat</span>
+                            <span class="text-xl font-bold text-emerald-400">0.0% (Organic)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAB 4: SpiderNet 5-Shock Tensile Web Radar -->
+                <div class="spotlight-card p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-purple-400 uppercase tracking-wider">Experiment 04 • Graph TDA</span>
+                            <span class="text-xs font-mono bg-purple-950 text-purple-300 px-2 py-0.5 rounded border border-purple-800">SpiderNet Radar</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">5-Shock Multi-Dimensional Anomaly Attribution</h3>
+                        <p class="text-xs text-slate-300 mb-4">
+                            Simulate shock events across the network. Watch the 5-shock radar decompose anomalies into geometry, velocity, topology, and causal residuals.
+                        </p>
+
+                        <!-- Scenario Buttons -->
+                        <div class="space-y-2 mb-4">
+                            <span class="text-xs font-mono text-slate-400">Inject System Shock:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="shock-scenario-btn px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-mono font-medium" data-scenario="baseline">
+                                    Normal Flow
+                                </button>
+                                <button class="shock-scenario-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs font-mono font-medium" data-scenario="ddos">
+                                    Traffic Burst
+                                </button>
+                                <button class="shock-scenario-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs font-mono font-medium" data-scenario="topological">
+                                    Topology Shift
+                                </button>
+                                <button class="shock-scenario-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs font-mono font-medium" data-scenario="flash">
+                                    Latent Causal
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Live Canvas Display -->
+                        <div class="relative w-full h-48 bg-slate-950/80 rounded-xl border border-slate-800 flex items-center justify-center overflow-hidden">
+                            <canvas id="spider-canvas" width="380" height="190" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Live Metrics Strip -->
+                    <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-slate-800/80 text-center font-mono">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Active Scenario</span>
+                            <span id="shock-scenario-label" class="text-sm font-bold text-purple-300">Normal Operational Flow</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">Anomaly Detection Confidence</span>
+                            <span id="shock-confidence" class="text-xl font-bold text-pink-400">4.2%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- 5. PUBLICATIONS & PAPERS                             -->
+        <!-- ==================================================== -->
+        <section id="publications" class="max-w-7xl mx-auto px-6">
+            <div class="space-y-4 mb-12">
+                <span class="text-xs font-mono tracking-widest uppercase text-cyan-400 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    Scholarship & Peer Review
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                    Publications & Scientific Reports.
+                </h2>
+                <p class="text-slate-400 max-w-2xl">
+                    Peer-reviewed research manuscripts, preprints, and formal project reports authored across machine learning theory, streaming agents, and anomaly systems.
+                </p>
+            </div>
+
+            <div class="space-y-6">
+
+                <!-- Publication 1: NeurIPS 2024 (Flux) -->
+                <div class="spotlight-card p-6 sm:p-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-950 text-indigo-300 border border-indigo-700/60 font-semibold">
+                                📜 NeurIPS 2024 Under Review
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Double-Blind Submission</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button class="open-bibtex-btn text-xs font-mono px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors flex items-center gap-1.5"
+                                data-bibtex="@article{flux2024bounded,
+  title={Bounded-Rational Entity State Tracking for Zero-Rollback Streaming Agents},
+  author={Anonymous Authors},
+  journal={Conference on Neural Information Processing Systems (NeurIPS)},
+  year={2024},
+  note={Under Review}
+}">
+                                <i data-lucide="quote" class="w-3.5 h-3.5 text-cyan-400"></i>
+                                <span>Copy BibTeX</span>
+                            </button>
+                            <a href="#projects" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 hover:bg-indigo-600/50 transition-colors flex items-center gap-1.5">
+                                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                                <span>Manuscript (coref/)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">
+                        Bounded-Rational Entity State Tracking for Zero-Rollback Streaming Agents
+                    </h3>
+                    <p class="text-xs font-mono text-cyan-400 mb-4">
+                        Anonymous Authors &bull; Under review for NeurIPS 2024 &bull; Reproducibility package verified
+                    </p>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        <strong>Abstract:</strong> In streaming agents and embodied artificial intelligence, inferences must be executed chronologically over time under strict zero-rollback irreversibility. Traditional retrospective NLP architectures rely on unconstrained bidirectional attention. We formalize bounded-rational state tracking with optimal commitment thresholds, proving substantial reductions in latency-induced drift while maintaining empirical state consistency on streaming benchmarks.
+                    </p>
+                </div>
+
+                <!-- Publication 2: SpiderNet UNC Chapel Hill -->
+                <div class="spotlight-card p-6 sm:p-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-950 text-purple-300 border border-purple-700/60 font-semibold">
+                                🏛️ Department of Computer Science, UNC Chapel Hill
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Midway Research Report</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button class="open-bibtex-btn text-xs font-mono px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors flex items-center gap-1.5"
+                                data-bibtex="@techreport{srinivasan2026spidernet,
+  title={SpiderNet: Grounded Multi-Shock Anomaly Detection and Intrinsic Root-Cause Attribution},
+  author={Srinivasan, Anand and Prabhu, Naveen},
+  institution={Department of Computer Science, University of North Carolina at Chapel Hill},
+  year={2026}
+}">
+                                <i data-lucide="quote" class="w-3.5 h-3.5 text-cyan-400"></i>
+                                <span>Copy BibTeX</span>
+                            </button>
+                            <a href="#projects" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-purple-600/30 text-purple-300 border border-purple-500/40 hover:bg-purple-600/50 transition-colors flex items-center gap-1.5">
+                                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                                <span>LaTeX Source (insectkiller/)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">
+                        SpiderNet: Grounded Multi-Shock Anomaly Detection and Intrinsic Root-Cause Attribution
+                    </h3>
+                    <p class="text-xs font-mono text-purple-400 mb-4">
+                        Anand Srinivasan, Naveen Prabhu &bull; Department of Computer Science, UNC Chapel Hill
+                    </p>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        <strong>Abstract:</strong> Complex distributed topological systems require diagnostic precision beyond scalar anomaly scores. We introduce SpiderNet, a multi-shock detection framework that maps telemetry onto a 5-shock manifold (latent geometry, GMM zone likelihood, temporal velocity, Wasserstein topological distance, and causal edge residuals). Evaluated across rigorous ablation sweeps, proving intrinsic root-cause localization with high statistical robustness.
+                    </p>
+                </div>
+
+                <!-- Publication 3: Generative Transformation Distance (GTD) Preprint -->
+                <div class="spotlight-card p-6 sm:p-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-950 text-emerald-300 border border-emerald-700/60 font-semibold">
+                                ⚡ Mathematical Machine Learning Preprint
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Differential Geometry</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button class="open-bibtex-btn text-xs font-mono px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors flex items-center gap-1.5"
+                                data-bibtex="@article{srinivasan2026reduction,
+  title={Reduction Network: Generative Transformation Distance Classification via Continuous Optimal Transport Line-Integrals},
+  author={Srinivasan, Anand},
+  journal={arXiv Preprint},
+  year={2026}
+}">
+                                <i data-lucide="quote" class="w-3.5 h-3.5 text-cyan-400"></i>
+                                <span>Copy BibTeX</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">
+                        Generative Transformation Distance: Classification via Continuous Least Action along Parameterized Neural Vector Fields
+                    </h3>
+                    <p class="text-xs font-mono text-emerald-400 mb-4">
+                        Anand Srinivasan &bull; Reduction Network Framework
+                    </p>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        <strong>Abstract:</strong> Classification has historically relied on static decision hyperplanes separating points in Euclidean space. We reframe classification through the physical principle of least action: calculating the minimum kinetic energy needed to transport a sample along neural vector fields to class prototype manifolds.
+                    </p>
+                </div>
+
+                <!-- PLACEHOLDER FOR UPCOMING PAPERS -->
+                <div class="spotlight-card p-6 border-dashed border-amber-500/40 bg-amber-950/10">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="placeholder-indicator">
+                            <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i>
+                            [Placeholder: Add Your Next Paper or Preprint]
+                        </span>
+                        <span class="text-xs font-mono text-slate-500">Edit in index.html</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-200">
+                        Upcoming Work: Hyperspherical Foliation for Ultra-Low Precision LLM Memory
+                    </h4>
+                    <p class="text-xs text-slate-400 mt-1">
+                        Currently running large-scale benchmarks on 70B+ parameter model KV caches. Space reserved for future publication details, DOI, and open-source artifact release.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- 6. ABOUT ME & TECHNICAL TOOLKIT                      -->
+        <!-- ==================================================== -->
+        <section id="about" class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                
+                <!-- Bio & Philosophy -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="space-y-3">
+                        <span class="text-xs font-mono tracking-widest uppercase text-cyan-400 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                            Background & Vision
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                            About Anand (Anu) Srinivasan.
+                        </h2>
+                    </div>
+
+                    <div class="text-base text-slate-300 space-y-4 leading-relaxed font-light">
+                        <p>
+                            I am a Computer Science researcher and software systems engineer at the <strong class="text-white font-medium">University of North Carolina at Chapel Hill</strong>. My passion lies at the intersection of non-Euclidean geometry, high-performance systems engineering, and adaptive intelligence.
+                        </p>
+                        <p>
+                            Rather than viewing artificial intelligence as an exercise in scaling compute on naive Euclidean architectures, I look for deep, explanatory models in neighboring fields: <strong class="text-cyan-300 font-medium">how astrophysics measures the stars</strong>, <strong class="text-indigo-300 font-medium">how complex analysis separates phase from amplitude</strong>, <strong class="text-rose-300 font-medium">how game designers craft combat tension</strong>, and <strong class="text-purple-300 font-medium">how biological organisms navigate irreversible time</strong>.
+                        </p>
+                        <p>
+                            Outside of research, I believe in writing bulletproof code: comprehensive unit test suites, sub-millisecond tail latency optimization, memory profiling, and reproducible scientific artifacts.
+                        </p>
+                    </div>
+
+                    <!-- Academic / Education Card -->
+                    <div class="spotlight-card p-6 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 shrink-0">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">University of North Carolina at Chapel Hill</h3>
+                            <p class="text-xs font-mono text-cyan-400 mt-0.5">Department of Computer Science &bull; Chapel Hill, NC</p>
+                            <p class="text-xs text-slate-300 mt-2">
+                                Research Focus: High-Dimensional Representation Foliation, Continual MLSys, Adversarial Reinforcement Learning, Streaming NLP & Knowledge Graphs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills Matrix -->
+                <div class="space-y-6">
+                    <div class="spotlight-card p-6 space-y-5">
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-5 h-5 text-indigo-400"></i>
+                            <span>Technical Arsenal</span>
+                        </h3>
+
+                        <!-- Category 1 -->
+                        <div>
+                            <span class="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">Deep Learning & Math</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-cyan-300 border border-slate-700">PyTorch</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-cyan-300 border border-slate-700">Complex-Valued NNs</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-cyan-300 border border-slate-700">Optimal Transport</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-cyan-300 border border-slate-700">Actor-Critic RL</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-cyan-300 border border-slate-700">TDA / Wasserstein</span>
+                            </div>
+                        </div>
+
+                        <!-- Category 2 -->
+                        <div>
+                            <span class="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">Languages & Runtimes</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-indigo-300 border border-slate-700">Python 3.11+</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-indigo-300 border border-slate-700">C++ / Systems</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-indigo-300 border border-slate-700">SQL & Graph Engines</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-indigo-300 border border-slate-700">JavaScript / WebGL</span>
+                            </div>
+                        </div>
+
+                        <!-- Category 3 -->
+                        <div>
+                            <span class="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">MLSys & Frameworks</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-pink-300 border border-slate-700">Pygame & Unity</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-pink-300 border border-slate-700">PyTest Batteries</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-pink-300 border border-slate-700">Docker</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-xs text-pink-300 border border-slate-700">Continuous Profiling</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Placeholder for Personal Certifications or Honors -->
+                    <div class="spotlight-card p-6 border-dashed border-amber-500/40 bg-amber-950/10">
+                        <span class="placeholder-indicator mb-2">
+                            <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                            [Placeholder: Honors, Awards, or Grants]
+                        </span>
+                        <p class="text-xs text-slate-300 mt-2">
+                            Add Dean's List, Research Grants, Fellowships, or hackathon awards here.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- 7. HOBBIES & CREATIVE PURSUITS                       -->
+        <!-- ==================================================== -->
+        <section id="hobbies" class="max-w-7xl mx-auto px-6">
+            <div class="space-y-4 mb-12">
+                <span class="text-xs font-mono tracking-widest uppercase text-cyan-400 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    Beyond the Terminal
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                    Hobbies & What Fuels the Mind.
+                </h2>
+                <p class="text-slate-400 max-w-2xl">
+                    Great research doesn't happen in a vacuum. The ideas behind my projects are directly nourished by my creative obsessions outside of computer science.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Hobby 1: Astrophysics & Stargazing -->
+                <div class="spotlight-card p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400">
+                            <i data-lucide="stars" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Astrophysics & Stargazing</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Observing celestial objects, telescope optics, and studying stellar distance measurements. The mathematical elegance of astronomical coordinate systems directly triggered <strong class="text-cyan-300">Project Milky Way</strong>.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-mono text-slate-500">
+                        Night sky &bull; Astrometry &bull; Optics
+                    </div>
+                </div>
+
+                <!-- Hobby 2: Game Design & Competitive Gaming -->
+                <div class="spotlight-card p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-rose-950 border border-rose-800 flex items-center justify-center text-rose-400">
+                            <i data-lucide="gamepad-2" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Combat Game Design</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Deconstructing Souls-like boss telegraphing, frame data, combat hitboxes, and fighting game mind games. Dissecting player psychology is what gave life to the anti-cyclic mechanics of <strong class="text-rose-300">Theseus' Foe</strong>.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-mono text-slate-500">
+                        Frame Data &bull; AI Boss Design &bull; Mechanics
+                    </div>
+                </div>
+
+                <!-- Hobby 3: Geometric & Algorithmic Art -->
+                <div class="spotlight-card p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-950 border border-indigo-800 flex items-center justify-center text-indigo-400">
+                            <i data-lucide="orbit" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Geometric & Vector Art</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Writing custom GLSL shaders, visualizing non-Euclidean Poincaré disks, and simulating dynamic vector fields. Visualizing dynamic streamlines inspired the continuous kinetic action in <strong class="text-indigo-300">Reduction Networks</strong>.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-mono text-slate-500">
+                        Custom Shaders &bull; Math Art &bull; Manifolds
+                    </div>
+                </div>
+
+                <!-- Hobby 4: User Placeholder Card -->
+                <div class="spotlight-card p-6 flex flex-col justify-between border-dashed border-amber-500/40 bg-amber-950/10">
+                    <div class="space-y-4">
+                        <span class="placeholder-indicator">
+                            <i data-lucide="heart" class="w-3.5 h-3.5"></i>
+                            [Placeholder: Personal Hobby]
+                        </span>
+                        <h3 class="text-lg font-bold text-slate-200">Music, Sports, or Creative Tinkering</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Do you play piano/guitar, run marathons, play basketball, brew espresso, or build custom keyboards? Replace this card with your favorite personal pursuit!
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-mono text-amber-400/80">
+                        Edit in index.html &rarr; #hobbies
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- 8. EXTRACURRICULARS & LEADERSHIP                     -->
+        <!-- ==================================================== -->
+        <section id="extracurriculars" class="max-w-7xl mx-auto px-6">
+            <div class="space-y-4 mb-12">
+                <span class="text-xs font-mono tracking-widest uppercase text-cyan-400 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    Community & Leadership
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                    Extracurriculars & Initiatives.
+                </h2>
+                <p class="text-slate-400 max-w-2xl">
+                    Mentorship, reading groups, hackathons, and collaborative initiatives undertaken during my time in computer science.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Activity 1 -->
+                <div class="spotlight-card p-6 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-indigo-400">Research & Seminars</span>
+                            <span class="text-xs font-mono text-slate-500">UNC CS</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Machine Learning & Systems Reading Groups</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Leading and participating in deep-dive discussions on recent NeurIPS, ICML, and MLSys papers. Dissecting hardware-aware continual adaptation, zero-rollback constraints, and geometric deep learning architectures.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-xs font-mono text-slate-400">
+                        Academic Discussion Leader
+                    </div>
+                </div>
+
+                <!-- Activity 2: Sports Analytics / OKC Project -->
+                <div class="spotlight-card p-6 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-cyan-400">Sports Science & Data</span>
+                            <span class="text-xs font-mono text-slate-500">OKC Project</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">NBA Basketball Analytics & Spatial Modeling</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Developed spatial shot evaluation and player movement models for the Oklahoma City Thunder (OKC) technical evaluation. Modeled high-frequency trajectory data to measure floor spacing and defensive gravity.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-xs font-mono text-cyan-400">
+                        Spatial Modeling in OKC_proj/
+                    </div>
+                </div>
+
+                <!-- Activity 3: Customizable Placeholder -->
+                <div class="spotlight-card p-6 flex flex-col justify-between border-dashed border-amber-500/40 bg-amber-950/10">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="placeholder-indicator">[Placeholder: Club / Organization]</span>
+                            <span class="text-xs font-mono text-slate-500">Add Dates</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-200">Hackathons, Student Clubs, or Teaching Assistantship</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Have you served as a Teaching Assistant (TA), led a student developer club, volunteered, or organized hackathons? Replace this card with your leadership roles.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-xs font-mono text-amber-400">
+                        Edit in index.html &rarr; #extracurriculars
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- 9. CONTACT & GITHUB DEPLOYMENT MODAL                 -->
+        <!-- ==================================================== -->
+        <section id="contact" class="max-w-7xl mx-auto px-6 pb-24">
+            <div class="spotlight-card p-8 sm:p-12 relative overflow-hidden bg-gradient-to-br from-slate-900/90 via-[#0d1321]/95 to-indigo-950/40 border border-indigo-500/20">
+                <div class="max-w-2xl space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Open for Collaborations & Research</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                        Let's build something genuinely creative together.
+                    </h2>
+
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Whether you are interested in exploring hyperspherical foliation, adversarial game AI, continual MLSys deployment, or discussing potential graduate research and industry collaborations, my inbox is always open.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="mailto:anandsr@cs.unc.edu" class="px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-all shadow-lg shadow-indigo-600/30 flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <span>Email Anand (UNC)</span>
+                        </a>
+                        <button class="copy-email-btn px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-mono text-sm border border-slate-700 transition-all flex items-center gap-2" data-email="anandsr@cs.unc.edu">
+                            <i data-lucide="copy" class="w-4 h-4 text-cyan-400"></i>
+                            <span>Copy anandsr@cs.unc.edu</span>
+                        </button>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-6 pt-6 text-sm text-slate-400 font-mono">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400"></i>
+                            UNC Chapel Hill &bull; North Carolina, USA
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="github" class="w-4 h-4 text-slate-300"></i>
+                            GitHub Ready for Hosting
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-[#07090e]/90 py-10 relative z-10 text-center text-xs text-slate-500 font-mono">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                &copy; 2026 Anand Srinivasan &bull; Designed & Built with Physics, Math & Code.
+            </div>
+            <div class="flex items-center gap-4 text-slate-400">
+                <a href="#hero" class="hover:text-cyan-400 transition-colors">Back to Top &uarr;</a>
+                <span>&bull;</span>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                <span>&bull;</span>
+                <a href="#experiments" class="hover:text-cyan-400 transition-colors">Labs</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================================================== -->
+    <!-- BIBTEX MODAL                                         -->
+    <!-- ==================================================== -->
+    <div id="bibtex-modal" class="hidden fixed inset-0 z-50 modal-overlay items-center justify-center p-4">
+        <div class="spotlight-card max-w-xl w-full p-6 sm:p-8 bg-[#0d1321] border border-slate-700 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i data-lucide="quote" class="w-5 h-5 text-cyan-400"></i>
+                    <span>BibTeX Citation</span>
+                </h3>
+                <button id="close-bibtex-modal" class="text-slate-400 hover:text-white p-1 rounded-lg">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="mt-4">
+                <pre class="bg-slate-950 p-4 rounded-xl text-xs font-mono text-cyan-300 overflow-x-auto border border-slate-800/80" id="bibtex-code"></pre>
+            </div>
+            <div class="mt-5 flex justify-end gap-3">
+                <button id="copy-bibtex-btn" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs font-mono flex items-center gap-2 transition-all">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                    <span>Copy to Clipboard</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="canvas-bg.js"></script>
+    <script src="experiments.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
