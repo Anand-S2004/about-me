@@ -353,10 +353,10 @@
                                     </span>
                                 </td>
                                 <td class="p-4 text-slate-300 text-xs">
-                                    Decomposes vector spaces via Stiefel submersion + Standard Candle distance modulus; separates radial scale from hyperspherical bit-vectors.
+                                    Stiefel Grassmannian submersion + Standard Candle distance modulus; separates radial photometric scale from hyperspherical bit-vectors.
                                 </td>
                                 <td class="p-4 font-mono text-emerald-400 text-xs">
-                                    <strong>128x compression: 0.456 vs FAISS PQ 0.246</strong> (20 Newsgroups). 1024x on Olivetti (0.85 vs 0.81 raw).
+                                    <strong>128x compression: 0.456 vs FAISS PQ 0.246</strong> (20 Newsgroups). 1024x on Olivetti (<strong>0.85 vs 0.81 raw</strong>).
                                 </td>
                                 <td class="p-4 text-slate-400 text-xs">
                                     Specialized for spherical/cosine manifolds; Euclidean linear metrics require anchor re-calibration.
@@ -368,9 +368,40 @@
                                 </td>
                             </tr>
 
-                            <!-- Rank 2: Flux -->
+                            <!-- Rank 2: SpiderNet (SOTA Rank #1) -->
+                            <tr class="hover:bg-slate-900/50 transition-colors bg-purple-950/10">
+                                <td class="p-4 text-center font-bold font-mono text-purple-400 text-sm">#2</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm flex items-center gap-1.5">
+                                        <span>SpiderNet (Insectkiller)</span>
+                                        <span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-purple-900 text-purple-200 border border-purple-600">SOTA #1</span>
+                                    </div>
+                                    <div class="text-[11px] font-mono text-purple-300">5-Shock Topological Anomaly Detection</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-purple-950 text-purple-300 border border-purple-700/60 text-xs">
+                                        9.3 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Arachnid-inspired 5D shock decomposition (Latent, Zone GMM, Velocity, Wasserstein, Causal) with multi-modal KMeans cluster envelopes.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    <strong>Overall Rank #1 SOTA on Honest PA-F1 (0.7458)</strong> across 7 benchmarks. Beats <strong>TranAD (0.623)</strong>, <strong>USAD (0.598)</strong>, <strong>AnomalyTransformer (0.498)</strong>. #1 on NAB (0.994) & SVDB (0.798).
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Requires multi-shock sensor alignment; dynamic thresholding must be domain-calibrated (ECG 1%, SWAT 10%).
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-purple-950 text-purple-300 border border-purple-800">
+                                        UNC Paper PDF
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 3: Flux -->
                             <tr class="hover:bg-slate-900/50 transition-colors">
-                                <td class="p-4 text-center font-bold font-mono text-blue-400 text-sm">#2</td>
+                                <td class="p-4 text-center font-bold font-mono text-blue-400 text-sm">#3</td>
                                 <td class="p-4">
                                     <div class="font-bold text-white text-sm">Flux Memory</div>
                                     <div class="text-[11px] font-mono text-blue-300">Zero-Rollback Streaming NLP</div>
@@ -384,7 +415,7 @@
                                     Bounds rational sequential decisions under physical irreversible commitment constraints without backward retrospection.
                                 </td>
                                 <td class="p-4 font-mono text-emerald-400 text-xs">
-                                    Constant budget B=10: <strong>0.93ms latency / mention, 1,071 m/s throughput</strong>, 42.5% precision.
+                                    Constant budget B=10: <strong>0.93ms latency / mention, 1,071 m/s throughput</strong>, 42.5% precision on LitBank.
                                 </td>
                                 <td class="p-4 text-slate-400 text-xs">
                                     Inherently lower absolute precision than offline bidirectional models that read entire text backwards.
@@ -396,9 +427,40 @@
                                 </td>
                             </tr>
 
-                            <!-- Rank 3: Reduction Network (GTD) -->
+                            <!-- Rank 4: CV-OSNS (Volatility Modelling SOTA) -->
+                            <tr class="hover:bg-slate-900/50 transition-colors bg-indigo-950/10">
+                                <td class="p-4 text-center font-bold font-mono text-indigo-400 text-sm">#4</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm flex items-center gap-1.5">
+                                        <span>CV-OSNS</span>
+                                        <span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-indigo-900 text-indigo-200 border border-indigo-600">Volatility SOTA</span>
+                                    </div>
+                                    <div class="text-[11px] font-mono text-indigo-300">Complex-Valued Heteroscedastic Volatility</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-indigo-950 text-indigo-300 border border-indigo-700/60 text-xs">
+                                        9.1 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Conformal Cauchy-Riemann gradient cop in ℂ: isolates trend in Re, absorbs GARCH bursts in Im. 6 formal mathematical derivations.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    <strong>Lowest Signal MSE (0.8063)</strong> beating <strong>Heteroskedastic NLL (0.9944)</strong> & LSTM (2.481) under GARCH volatility bursts with 96.1% coverage. 42K params (3x smaller than PatchTST).
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    On non-volatile stationary trends, multi-head patch transformers achieve lower pure MSE due to sheer parameter scale.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-950 text-indigo-300 border border-indigo-800">
+                                        Defense Guide
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 5: Reduction Network (GTD) -->
                             <tr class="hover:bg-slate-900/50 transition-colors">
-                                <td class="p-4 text-center font-bold font-mono text-emerald-400 text-sm">#3</td>
+                                <td class="p-4 text-center font-bold font-mono text-emerald-400 text-sm">#5</td>
                                 <td class="p-4">
                                     <div class="font-bold text-white text-sm">Reduction Network (GTD)</div>
                                     <div class="text-[11px] font-mono text-emerald-300">Optimal Transport Action DL</div>
@@ -424,44 +486,16 @@
                                 </td>
                             </tr>
 
-                            <!-- Rank 4: CV-OSNS -->
+                            <!-- Rank 6: Theseus' Foe -->
                             <tr class="hover:bg-slate-900/50 transition-colors">
-                                <td class="p-4 text-center font-bold font-mono text-indigo-400 text-sm">#4</td>
-                                <td class="p-4">
-                                    <div class="font-bold text-white text-sm">CV-OSNS</div>
-                                    <div class="text-[11px] font-mono text-indigo-300">Complex-Valued Signal Separation</div>
-                                </td>
-                                <td class="p-4 text-center">
-                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-indigo-950 text-indigo-300 border border-indigo-700/60 text-xs">
-                                        8.7 / 10
-                                    </span>
-                                </td>
-                                <td class="p-4 text-slate-300 text-xs">
-                                    Gradient traffic cop in ℂ: deterministic trends decouple onto Re while heteroscedastic volatility spikes channel into Im.
-                                </td>
-                                <td class="p-4 font-mono text-emerald-400 text-xs">
-                                    Only <strong>42K parameters</strong> (3x smaller than PatchTST), near-zero correlation ρ = -0.14 under spikes.
-                                </td>
-                                <td class="p-4 text-slate-400 text-xs">
-                                    On non-volatile stationary datasets, multi-head patch transformers achieve lower pure MSE due to raw scale.
-                                </td>
-                                <td class="p-4 text-center">
-                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-950 text-indigo-300 border border-indigo-800">
-                                        Defense Guide
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <!-- Rank 5: Theseus' Foe -->
-                            <tr class="hover:bg-slate-900/50 transition-colors">
-                                <td class="p-4 text-center font-bold font-mono text-rose-400 text-sm">#5</td>
+                                <td class="p-4 text-center font-bold font-mono text-rose-400 text-sm">#6</td>
                                 <td class="p-4">
                                     <div class="font-bold text-white text-sm">Theseus' Foe</div>
                                     <div class="text-[11px] font-mono text-rose-300">Anti-Cyclic Combat AI SDK</div>
                                 </td>
                                 <td class="p-4 text-center">
                                     <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-rose-950 text-rose-300 border border-rose-700/60 text-xs">
-                                        8.5 / 10
+                                        8.6 / 10
                                     </span>
                                 </td>
                                 <td class="p-4 text-slate-300 text-xs">
@@ -476,34 +510,6 @@
                                 <td class="p-4 text-center">
                                     <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-rose-950 text-rose-300 border border-rose-800">
                                         Shipped .EXE Game
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <!-- Rank 6: SpiderNet -->
-                            <tr class="hover:bg-slate-900/50 transition-colors">
-                                <td class="p-4 text-center font-bold font-mono text-purple-400 text-sm">#6</td>
-                                <td class="p-4">
-                                    <div class="font-bold text-white text-sm">SpiderNet (Insectkiller)</div>
-                                    <div class="text-[11px] font-mono text-purple-300">5-Shock Topological Anomaly</div>
-                                </td>
-                                <td class="p-4 text-center">
-                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-purple-950 text-purple-300 border border-purple-700/60 text-xs">
-                                        8.2 / 10
-                                    </span>
-                                </td>
-                                <td class="p-4 text-slate-300 text-xs">
-                                    Arachnid-inspired 5D shock decomposition: Latent, Zone GMM, Velocity, Wasserstein Topology, and Causal Edge residuals.
-                                </td>
-                                <td class="p-4 font-mono text-emerald-400 text-xs">
-                                    <strong>0.9897 precision</strong> on ECG5000, <strong>0.9493</strong> on Credit Card Fraud; 19 tests passing.
-                                </td>
-                                <td class="p-4 text-slate-400 text-xs">
-                                    Unsupervised regime on PSM industrial streams achieves modest precision (0.39) due to telemetry noise.
-                                </td>
-                                <td class="p-4 text-center">
-                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-purple-950 text-purple-300 border border-purple-800">
-                                        UNC Paper PDF
                                     </span>
                                 </td>
                             </tr>
@@ -804,9 +810,9 @@
                     <div class="space-y-5">
                         <div class="flex items-center justify-between">
                             <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-950/80 text-indigo-300 border border-indigo-800/60 font-semibold">
-                                📐 Complex Mathematical DL • 8.7/10
+                                📐 Volatility Modelling SOTA • 9.1/10
                             </span>
-                            <span class="text-xs font-mono text-emerald-400 font-semibold">42K Params (3x Smaller than PatchTST)</span>
+                            <span class="text-xs font-mono text-emerald-400 font-semibold">Signal MSE: 0.8063 (Beats Heteroskedastic NLL)</span>
                         </div>
 
                         <h3 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">
@@ -825,7 +831,7 @@
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Evaluated across canonical long-horizon benchmarks (ETTm1, ETTm2, Weather, Traffic, Exchange Rate). Features extreme parameter efficiency: operates with only <strong>42,145 parameters</strong> (vs PatchTST's 120,096 params and N-BEATS' 1M+), achieving orthogonal signal-noise cross-correlation of \(\rho = -0.14\) during market shocks.
+                            Beats established volatility benchmarks under GARCH volatility bursts and regime shifts, achieving lowest Signal MSE (0.8063 trend recovery error vs Heteroskedastic Gaussian NLL's 0.9944, MLP's 0.8537, and LSTM's 2.4818) while maintaining 96.1% empirical coverage. Supported by 6 formal mathematical derivations in the Master Defense Guide (destructive wave phase inversion \(iZ\), Cauchy-Riemann conformal coupling, and exact conformal quantiles) with only 4,034 to 42,145 parameters.
                         </p>
 
                         <!-- Tech Specs & Features -->
@@ -917,9 +923,9 @@
                     <div class="space-y-5">
                         <div class="flex items-center justify-between">
                             <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-950/80 text-purple-300 border border-purple-800/60 font-semibold">
-                                🕸️ Multi-Shock Graph TDA • 8.2/10
+                                🕸️ Anomaly Detection SOTA (#1 Overall) • 9.3/10
                             </span>
-                            <span class="text-xs font-mono text-emerald-400 font-semibold">0.9897 Precision (ECG5000)</span>
+                            <span class="text-xs font-mono text-emerald-400 font-semibold">Honest PA-F1: 0.7458 (Beats TranAD & USAD)</span>
                         </div>
 
                         <h3 class="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">
