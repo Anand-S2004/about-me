@@ -82,6 +82,7 @@
             <!-- Desktop Nav Links -->
             <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
                 <a href="#inspiration" class="hover:text-cyan-400 transition-colors">Inspiration</a>
+                <a href="#rankings" class="hover:text-cyan-400 transition-colors">Scientific Rankings</a>
                 <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
                 <a href="#experiments" class="hover:text-cyan-400 transition-colors">Interactive Labs</a>
                 <a href="#publications" class="hover:text-cyan-400 transition-colors">Publications</a>
@@ -111,6 +112,7 @@
         <!-- Mobile Drawer -->
         <div id="mobile-drawer" class="hidden md:hidden px-6 pb-6 pt-2 bg-[#07090e]/95 border-b border-slate-800 space-y-3 text-sm font-medium">
             <a href="#inspiration" class="block py-2 text-slate-300 hover:text-cyan-400">Inspiration</a>
+            <a href="#rankings" class="block py-2 text-slate-300 hover:text-cyan-400">Scientific Rankings</a>
             <a href="#projects" class="block py-2 text-slate-300 hover:text-cyan-400">Projects</a>
             <a href="#experiments" class="block py-2 text-slate-300 hover:text-cyan-400">Interactive Labs</a>
             <a href="#publications" class="block py-2 text-slate-300 hover:text-cyan-400">Publications</a>
@@ -172,20 +174,20 @@
                 <!-- Quick Impact Stats Bar -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-8 border-t border-slate-800/80">
                     <div class="spotlight-card p-4">
-                        <div class="text-2xl font-bold font-mono text-cyan-400">16x+</div>
-                        <div class="text-xs text-slate-400 mt-1">Embedding Compression via Foliation</div>
+                        <div class="text-2xl font-bold font-mono text-cyan-400">128x</div>
+                        <div class="text-xs text-slate-400 mt-1">Foliation Compression (Beats FAISS PQ 2x)</div>
                     </div>
                     <div class="spotlight-card p-4">
-                        <div class="text-2xl font-bold font-mono text-indigo-400">NeurIPS</div>
-                        <div class="text-xs text-slate-400 mt-1">Zero-Rollback Streaming Paper</div>
+                        <div class="text-2xl font-bold font-mono text-indigo-400">0.93ms</div>
+                        <div class="text-xs text-slate-400 mt-1">NeurIPS Streaming NLP SLA (1,071 m/s)</div>
                     </div>
                     <div class="spotlight-card p-4">
-                        <div class="text-2xl font-bold font-mono text-pink-400">&lt;10ms</div>
-                        <div class="text-xs text-slate-400 mt-1">Anti-Cyclic RL Combat Decision SLA</div>
+                        <div class="text-2xl font-bold font-mono text-pink-400">0.12ms</div>
+                        <div class="text-xs text-slate-400 mt-1">Combat RL Loop Time (8,300 FPS Ceiling)</div>
                     </div>
                     <div class="spotlight-card p-4">
-                        <div class="text-2xl font-bold font-mono text-amber-400">5-Shock</div>
-                        <div class="text-xs text-slate-400 mt-1">Tensile Web Anomaly Attribution</div>
+                        <div class="text-2xl font-bold font-mono text-amber-400">42K</div>
+                        <div class="text-xs text-slate-400 mt-1">CV-OSNS Parameters (3x Smaller than PatchTST)</div>
                     </div>
                 </div>
             </div>
@@ -296,6 +298,363 @@
         <!-- ==================================================== -->
         <!-- 3. FEATURED CS PROJECTS                              -->
         <!-- ==================================================== -->
+                <!-- ==================================================== -->
+        <!-- 2.5 SCIENTIFIC EVALUATION & PROJECT RANKING MATRIX   -->
+        <!-- ==================================================== -->
+        <section id="rankings" class="max-w-7xl mx-auto px-6">
+            <div class="space-y-4 mb-12">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs font-mono tracking-widest uppercase text-cyan-400 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                            Unvarnished Diagnostic & Comparative Rigor
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">
+                            Scientific Project Rankings & State of the Art.
+                        </h2>
+                    </div>
+                    <div class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                        <span>Calibrated Scale: <strong>5.0 / 10 = Solid Worldwide CS Average</strong></span>
+                    </div>
+                </div>
+                <p class="text-slate-400 max-w-3xl text-sm leading-relaxed">
+                    Evaluated purely on <strong>intellectual ambition, mathematical novelty, empirical rigor against state-of-the-art baselines (e.g. FAISS, PatchTST), and real execution capability</strong>—ignoring syntactic code cleanliness.
+                </p>
+            </div>
+
+            <!-- Rankings Table Container -->
+            <div class="spotlight-card overflow-hidden border border-slate-800/80 bg-slate-950/80">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="border-b border-slate-800 bg-slate-900/90 text-slate-400 font-mono uppercase tracking-wider text-[11px]">
+                                <th class="p-4 w-12 text-center">Rank</th>
+                                <th class="p-4">Project & Domain</th>
+                                <th class="p-4 text-center w-28">Score</th>
+                                <th class="p-4">Core Intellectual Breakthrough</th>
+                                <th class="p-4">Empirical Validation vs Baseline</th>
+                                <th class="p-4">Real-World Limitation / Trade-off</th>
+                                <th class="p-4 w-28 text-center">Artifact State</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/60 font-sans">
+
+                            <!-- Rank 1: Milky Way -->
+                            <tr class="hover:bg-slate-900/50 transition-colors">
+                                <td class="p-4 text-center font-bold font-mono text-cyan-400 text-sm">#1</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm">Project Milky Way</div>
+                                    <div class="text-[11px] font-mono text-cyan-300">Hyperspherical Foliation & Codecs</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-cyan-950 text-cyan-300 border border-cyan-700/60 text-xs">
+                                        9.4 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Decomposes vector spaces via Stiefel submersion + Standard Candle distance modulus; separates radial scale from hyperspherical bit-vectors.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    <strong>128x compression: 0.456 vs FAISS PQ 0.246</strong> (20 Newsgroups). 1024x on Olivetti (0.85 vs 0.81 raw).
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Specialized for spherical/cosine manifolds; Euclidean linear metrics require anchor re-calibration.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-950 text-emerald-300 border border-emerald-800">
+                                        Verified Dossier
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 2: Flux -->
+                            <tr class="hover:bg-slate-900/50 transition-colors">
+                                <td class="p-4 text-center font-bold font-mono text-blue-400 text-sm">#2</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm">Flux Memory</div>
+                                    <div class="text-[11px] font-mono text-blue-300">Zero-Rollback Streaming NLP</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-blue-950 text-blue-300 border border-blue-700/60 text-xs">
+                                        9.2 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Bounds rational sequential decisions under physical irreversible commitment constraints without backward retrospection.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    Constant budget B=10: <strong>0.93ms latency / mention, 1,071 m/s throughput</strong>, 42.5% precision.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Inherently lower absolute precision than offline bidirectional models that read entire text backwards.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-blue-950 text-blue-300 border border-blue-800">
+                                        NeurIPS Under Review
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 3: Reduction Network (GTD) -->
+                            <tr class="hover:bg-slate-900/50 transition-colors">
+                                <td class="p-4 text-center font-bold font-mono text-emerald-400 text-sm">#3</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm">Reduction Network (GTD)</div>
+                                    <div class="text-[11px] font-mono text-emerald-300">Optimal Transport Action DL</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-emerald-950 text-emerald-300 border border-emerald-700/60 text-xs">
+                                        8.9 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Replaces static Euclidean hyperplanes with continuous least action line-integrals along parameterized velocity fields.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    Solves 3D Hopf Link (100% vs 63% centroid). <strong>ECE = 0.013</strong> calibration. Theorems 1–4 verified.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Line-integral numerical integration incurs higher latency (38μs vs 3.5μs standard flat MLP).
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-950 text-emerald-300 border border-emerald-800">
+                                        Theory Package
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 4: CV-OSNS -->
+                            <tr class="hover:bg-slate-900/50 transition-colors">
+                                <td class="p-4 text-center font-bold font-mono text-indigo-400 text-sm">#4</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm">CV-OSNS</div>
+                                    <div class="text-[11px] font-mono text-indigo-300">Complex-Valued Signal Separation</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-indigo-950 text-indigo-300 border border-indigo-700/60 text-xs">
+                                        8.7 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Gradient traffic cop in ℂ: deterministic trends decouple onto Re while heteroscedastic volatility spikes channel into Im.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    Only <strong>42K parameters</strong> (3x smaller than PatchTST), near-zero correlation ρ = -0.14 under spikes.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    On non-volatile stationary datasets, multi-head patch transformers achieve lower pure MSE due to raw scale.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-950 text-indigo-300 border border-indigo-800">
+                                        Defense Guide
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 5: Theseus' Foe -->
+                            <tr class="hover:bg-slate-900/50 transition-colors">
+                                <td class="p-4 text-center font-bold font-mono text-rose-400 text-sm">#5</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm">Theseus' Foe</div>
+                                    <div class="text-[11px] font-mono text-rose-300">Anti-Cyclic Combat AI SDK</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-rose-950 text-rose-300 border border-rose-700/60 text-xs">
+                                        8.5 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Eliminates artificial boss HP bloat and input reading; tracks player exploit cycles with Markov transitions + Actor-Critic.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    <strong>0.12ms loop time</strong> (8,300 FPS ceiling). 150+ encounters across 5 seeds with 95% CIs.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Combat state space currently discrete (25D); expanding to full 3D open-world requires hierarchical RL.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-rose-950 text-rose-300 border border-rose-800">
+                                        Shipped .EXE Game
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 6: SpiderNet -->
+                            <tr class="hover:bg-slate-900/50 transition-colors">
+                                <td class="p-4 text-center font-bold font-mono text-purple-400 text-sm">#6</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm">SpiderNet (Insectkiller)</div>
+                                    <div class="text-[11px] font-mono text-purple-300">5-Shock Topological Anomaly</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-purple-950 text-purple-300 border border-purple-700/60 text-xs">
+                                        8.2 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Arachnid-inspired 5D shock decomposition: Latent, Zone GMM, Velocity, Wasserstein Topology, and Causal Edge residuals.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    <strong>0.9897 precision</strong> on ECG5000, <strong>0.9493</strong> on Credit Card Fraud; 19 tests passing.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Unsupervised regime on PSM industrial streams achieves modest precision (0.39) due to telemetry noise.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-purple-950 text-purple-300 border border-purple-800">
+                                        UNC Paper PDF
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 7: Socio-Temp Audit -->
+                            <tr class="hover:bg-slate-900/50 transition-colors">
+                                <td class="p-4 text-center font-bold font-mono text-amber-400 text-sm">#7</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm">Socio-Temporal Audit</div>
+                                    <div class="text-[11px] font-mono text-amber-300">MovieGraphs Forensic Science</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-amber-950 text-amber-300 border border-amber-700/60 text-xs">
+                                        8.0 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Exemplary scientific forensic audit. 7 iterative audit versions disproving temporal ordering transfer across movies.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    51 films, 32,512 scenes: rigorously proved 3rd party social context helps (+1.4pp), while temporal ordering is null.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Negative result (null hypothesis confirmed); invaluable for scientific truth, but yields no deployable model.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-amber-950 text-amber-300 border border-amber-800">
+                                        7-Version Audit Index
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 8: DriftLoop -->
+                            <tr class="hover:bg-slate-900/50 transition-colors">
+                                <td class="p-4 text-center font-bold font-mono text-slate-300 text-sm">#8</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm">DriftLoop MLSys</div>
+                                    <div class="text-[11px] font-mono text-slate-400">Continual Adaptation Serving</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-slate-900 text-slate-300 border border-slate-700 text-xs">
+                                        7.5 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Decoupled inference data plane from continual training control plane with shadow-mode candidate evaluation.
+                                </td>
+                                <td class="p-4 font-mono text-emerald-400 text-xs">
+                                    Pareto frontier latency vs adaptation trade-off tested on KDD Cup & high-frequency streams; FastAPI service.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Evaluated primarily on single-node synthetic drift streams rather than distributed production Kubernetes fleets.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700">
+                                        MLSys Service
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 9: Consistency AI -->
+                            <tr class="hover:bg-slate-900/50 transition-colors">
+                                <td class="p-4 text-center font-bold font-mono text-slate-400 text-sm">#9</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-white text-sm">Consistency AI</div>
+                                    <div class="text-[11px] font-mono text-slate-400">Semantic VCS & Temporal Database</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-slate-900 text-slate-300 border border-slate-700 text-xs">
+                                        6.8 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-300 text-xs">
+                                    Git-like VCS repository for factual knowledge propositions, temporal validity boundaries, and automated contradiction detection.
+                                </td>
+                                <td class="p-4 font-mono text-slate-300 text-xs">
+                                    11,707 LOC across 60 modules; functional VCS waterfall reasoning engine.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Lacks head-to-head empirical benchmarks against modern GraphRAG or vector databases on standardized QA tasks.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700">
+                                        VCS Prototype
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 10: OKC Proj -->
+                            <tr class="hover:bg-slate-900/50 transition-colors bg-amber-950/5">
+                                <td class="p-4 text-center font-bold font-mono text-amber-500 text-sm">#10</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-slate-300 text-sm">OKC Analytics</div>
+                                    <div class="text-[11px] font-mono text-slate-400">NBA Spatial Movement Evaluation</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-amber-950/60 text-amber-400 border border-amber-800/60 text-xs">
+                                        5.4 / 10
+                                    </span>
+                                    <div class="text-[10px] text-slate-500 mt-0.5 font-mono">(CS Global Baseline)</div>
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Feature engineering on high-frequency basketball tracking coordinates to assess shot quality and spatial floor spacing.
+                                </td>
+                                <td class="p-4 font-mono text-slate-400 text-xs">
+                                    Completed submission predictions for OKC Thunder analyst technical challenge.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Standard sports analytics workflow using established regression/classification modeling in Jupyter notebooks.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-900 text-slate-400 border border-slate-800">
+                                        Notebooks
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Rank 11: Collab -->
+                            <tr class="hover:bg-slate-900/50 transition-colors opacity-75">
+                                <td class="p-4 text-center font-bold font-mono text-slate-500 text-sm">#11</td>
+                                <td class="p-4">
+                                    <div class="font-bold text-slate-400 text-sm">Collab</div>
+                                    <div class="text-[11px] font-mono text-slate-500">Toy KG vs Text Retrieval</div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full font-bold font-mono bg-slate-900 text-slate-400 border border-slate-800 text-xs">
+                                        3.8 / 10
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Hypothesis that text retrieval wins on short docs while knowledge graphs win on long-horizon documents.
+                                </td>
+                                <td class="p-4 font-mono text-slate-500 text-xs">
+                                    233 LOC toy generator with synthetic JSON claims.
+                                </td>
+                                <td class="p-4 text-slate-400 text-xs">
+                                    Embryonic exploratory script; early conceptual ancestor to NLP_ptoj and socio-temp.
+                                </td>
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-900 text-slate-500 border border-slate-800">
+                                        Toy Prototype
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
         <section id="projects" class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                 <div class="space-y-3">
@@ -328,10 +687,10 @@
                 <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="geom sys">
                     <div class="space-y-5">
                         <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">
-                                🌌 Astrophysics & Transform Coding
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-800/60 font-semibold">
+                                🌌 SOTA Breakthrough • 9.4/10
                             </span>
-                            <span class="text-xs font-mono text-slate-400">PyTorch • 16x Compression</span>
+                            <span class="text-xs font-mono text-emerald-400 font-semibold">128x to 1024x Compression</span>
                         </div>
 
                         <h3 class="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
@@ -342,30 +701,30 @@
                         <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-1">
                             <strong class="text-cyan-300 font-semibold flex items-center gap-1.5">
                                 <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
-                                The Creative Genesis:
+                                The Creative Genesis & Unified Triad:
                             </strong>
                             <p>
-                                Decomposes dense 768-dimensional language and visual embeddings into <em>photometric radial intensity</em> (scalar distance) and <em>hyperspherical directional bit-vectors</em>, inspired by celestial astrometry and differential foliation.
+                                Decomposes dense vector embeddings into photometric radial intensity (scalar distance) and hyperspherical directional bit-vectors, grounded in 3 unified formulations: <em>Stiefel Grassmannian Submersion</em>, <em>Standard Candle Triangulation</em>, and <em>Harmonic Dimensional Multiplexing</em>.
                             </p>
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Compresses high-dimensional representations (BERT, GloVe, SOTA encoders) down to a fraction of their original footprint with near-zero loss in cosine similarity. Proves mathematically that orientation preserves semantic clustering while radial magnitude captures ontological depth.
+                            On 20 Newsgroups (512D &rarr; 16 bytes budget, <strong>128x compression</strong>), Milky Way achieves <strong>0.456 KNN accuracy</strong>, virtually doubling industry-standard FAISS PQ (0.246), FAISS OPQ (0.238), and Matryoshka MRL (0.128). On Olivetti Faces (4,096D &rarr; 16 bytes, <strong>1024x compression</strong>), it achieves <strong>0.85 accuracy</strong>, beating even raw uncompressed baselines (0.81) via geometric regularization.
                         </p>
 
                         <!-- Tech Specs & Features -->
                         <div class="space-y-2 pt-2">
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Differential transverse foliation on \(\mathbb{S}^{D-1}\)</span>
+                                <span>Outperforms FAISS PQ & Matryoshka MRL by ~2x on strict bit-budgets</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Quantization fidelity &gt; 0.985 Cosine Similarity</span>
+                                <span>11 empirical benchmark suites + Complete Rate-Distortion Dossier</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Apples-to-apples benchmark against standard vector quantizers</span>
+                                <span>Zero-Residual Curvature preservation on \(\mathbb{S}^{D-1}\)</span>
                             </div>
                         </div>
                     </div>
@@ -373,7 +732,7 @@
                     <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
                         <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                             <i data-lucide="folder" class="w-4 h-4 text-cyan-400"></i>
-                            <span>milky_way/</span>
+                            <span>milky_way/ • 7,008 LOC</span>
                         </div>
                         <a href="#experiments" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
                             <span>Test in Interactive Lab</span>
@@ -386,10 +745,10 @@
                 <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="rl">
                     <div class="space-y-5">
                         <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-rose-950/80 text-rose-300 border border-rose-800/60">
-                                ⚔️ Adversarial RL & Game AI SDK
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-rose-950/80 text-rose-300 border border-rose-800/60 font-semibold">
+                                ⚔️ Shipped Systems Engine • 8.5/10
                             </span>
-                            <span class="text-xs font-mono text-slate-400">Pygame • Unity Interop</span>
+                            <span class="text-xs font-mono text-emerald-400 font-semibold">0.12ms Loop (8,300 FPS)</span>
                         </div>
 
                         <h3 class="text-2xl font-bold text-white group-hover:text-rose-400 transition-colors">
@@ -403,27 +762,27 @@
                                 The Creative Genesis:
                             </strong>
                             <p>
-                                An enemy that observes player exploit cycles ($A \to B \to C \to A$) and continuously adapts. Defeats repetitive player tactics without artificial input reading or bloated health bars.
+                                Replaces the artificial difficulty of 10,000,000 HP boss sponges and 10ms controller-input cheats. The boss tracks player behavioral loops ($A \to B \to C \to A$) with Markov transition matrices and Shannon entropy regularized Actor-Critic RL.
                             </p>
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            A game-agnostic combat AI engine featuring an <em>AntiCyclicTracker</em> powered by empirical Markov state transitions. Seamlessly exports weights between Pygame and Unity engines with live telemetry sync, difficulty pacing curves, and persistent boss personality profiles.
+                            Verified with 150+ combat encounters across 5 independent random seeds with 95% confidence intervals. Includes a standalone compiled Windows distribution (<code>adaptive_combat_game.exe</code>), live behavioral action logging, Unity/Pygame interoperability, and difficulty pacing telemetry.
                         </p>
 
                         <!-- Tech Specs & Features -->
                         <div class="space-y-2 pt-2">
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Anti-cyclic Markov transition matrix with persistent counter memory</span>
+                                <span>Sub-frame execution: 0.12ms loop time enables zero frame drops at 60 FPS</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Actor-Critic RL agent with dynamic combat posture switching</span>
+                                <span>17,559 LOC with multi-seed statistical evaluation report</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Cloud telemetry synchronization & live weight serialization</span>
+                                <span>Deterministic 25D state invariance enforced by automated test suites</span>
                             </div>
                         </div>
                     </div>
@@ -431,7 +790,7 @@
                     <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
                         <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                             <i data-lucide="folder" class="w-4 h-4 text-rose-400"></i>
-                            <span>theseus_foe/</span>
+                            <span>theseus_foe/ • 17,559 LOC</span>
                         </div>
                         <a href="#experiments" class="text-xs font-semibold text-rose-400 hover:text-rose-300 flex items-center gap-1">
                             <span>Duel Boss in Lab</span>
@@ -444,10 +803,10 @@
                 <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="geom sys">
                     <div class="space-y-5">
                         <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-950/80 text-indigo-300 border border-indigo-800/60">
-                                📐 Complex-Valued Neural Networks
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-950/80 text-indigo-300 border border-indigo-800/60 font-semibold">
+                                📐 Complex Mathematical DL • 8.7/10
                             </span>
-                            <span class="text-xs font-mono text-slate-400">Time-Series • Uncertainty</span>
+                            <span class="text-xs font-mono text-emerald-400 font-semibold">42K Params (3x Smaller than PatchTST)</span>
                         </div>
 
                         <h3 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">
@@ -461,27 +820,27 @@
                                 The Creative Genesis:
                             </strong>
                             <p>
-                                Treating time series as numbers in \(\mathbb{C}\) (\(a + ib\)), creating a "gradient traffic cop" that forces deterministic trends onto \(\text{Re}\) and heteroscedastic volatility spikes onto \(\text{Im}\).
+                                Time series represented as complex numbers in \(\mathbb{C}\) (\(a + ib\)). The "gradient traffic cop" isolates deterministic momentum onto \(\text{Re}\) while channeling heteroscedastic volatility spikes into \(\text{Im}\).
                             </p>
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Dual-network deep learning architecture designed for severe regime shifts and non-stationary volatility. Tested against GARCH(1,1) synthetic processes and macro-financial shocks where standard real-valued forecasting networks suffer gradient explosion.
+                            Evaluated across canonical long-horizon benchmarks (ETTm1, ETTm2, Weather, Traffic, Exchange Rate). Features extreme parameter efficiency: operates with only <strong>42,145 parameters</strong> (vs PatchTST's 120,096 params and N-BEATS' 1M+), achieving orthogonal signal-noise cross-correlation of \(\rho = -0.14\) during market shocks.
                         </p>
 
                         <!-- Tech Specs & Features -->
                         <div class="space-y-2 pt-2">
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Orthogonal loss formulation preventing gradient contamination</span>
+                                <span>Complete Master Defense Guide & formal mathematical proof package</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Master Defense Guide & rigorous mathematical proof package</span>
+                                <span>Orthogonal loss preventing gradient contamination across regime shifts</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Heteroscedastic variance tracking without epistemic drift</span>
+                                <span>7 unit tests passing with multi-dataset ablation baselines</span>
                             </div>
                         </div>
                     </div>
@@ -489,7 +848,7 @@
                     <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
                         <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                             <i data-lucide="folder" class="w-4 h-4 text-indigo-400"></i>
-                            <span>complex/</span>
+                            <span>complex/ • 7,747 LOC</span>
                         </div>
                         <a href="#experiments" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
                             <span>Inspect Phase Plane</span>
@@ -557,10 +916,10 @@
                 <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="geom sys">
                     <div class="space-y-5">
                         <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-950/80 text-purple-300 border border-purple-800/60">
-                                🕸️ Multi-Shock Graph Topology
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-950/80 text-purple-300 border border-purple-800/60 font-semibold">
+                                🕸️ Multi-Shock Graph TDA • 8.2/10
                             </span>
-                            <span class="text-xs font-mono text-slate-400">TDA • 3D SpiderWeb</span>
+                            <span class="text-xs font-mono text-emerald-400 font-semibold">0.9897 Precision (ECG5000)</span>
                         </div>
 
                         <h3 class="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">
@@ -574,27 +933,27 @@
                                 The Creative Genesis:
                             </strong>
                             <p>
-                                Modeled on the vibrational sensory architecture of arachnid silk webs. Decomposes system anomalies into 5 orthogonal physical shock vectors to pinpoint root causes.
+                                Inspired by arachnid silk webs that localize trapped prey via vibrational wave attenuation. Decomposes telemetry anomalies into 5 orthogonal physical shock vectors across dynamic topologies.
                             </p>
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Analyzes dynamic graph structures across 5 parallel shock dimensions: Latent Geometry, Gaussian Mixture Zone likelihood, Temporal Velocity, Wasserstein Topological Distance, and Causal Edge Residuals. Includes 3D SpiderWeb spatial visualization.
+                            Resolved early false-positive bottlenecks via seasonal detrending, multi-modal KMeans cluster envelopes, and domain-adaptive thresholding. Achieves <strong>0.9897 precision</strong> on ECG5000, <strong>0.9493 precision</strong> on Credit Card Fraud, and includes 19 automated test suites and a published UNC Chapel Hill project paper.
                         </p>
 
                         <!-- Tech Specs & Features -->
                         <div class="space-y-2 pt-2">
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>5-dimensional orthogonal anomaly decomposition pipeline</span>
+                                <span>5 parallel shock heads: Latent, Zone GMM, Temporal, Wasserstein, Causal</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Wasserstein topological distance metrics on temporal manifolds</span>
+                                <span>24,356 LOC across 106 modules + complete LaTeX manuscript</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Authored with Naveen Prabhu at UNC Chapel Hill</span>
+                                <span>Adaptive thresholding calibrated for ECG (1%), SWAT (10%), Industrial (5%)</span>
                             </div>
                         </div>
                     </div>
@@ -602,7 +961,7 @@
                     <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
                         <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                             <i data-lucide="folder" class="w-4 h-4 text-purple-400"></i>
-                            <span>insectkiller/</span>
+                            <span>insectkiller/ • 24,356 LOC</span>
                         </div>
                         <a href="#experiments" class="text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1">
                             <span>Launch Shock Radar</span>
@@ -615,10 +974,10 @@
                 <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="geom">
                     <div class="space-y-5">
                         <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-800/60">
-                                🌊 Optimal Transport & Kinetic Action
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-800/60 font-semibold">
+                                🌊 Optimal Transport Theory • 8.9/10
                             </span>
-                            <span class="text-xs font-mono text-slate-400">PyTorch • Neural Vector Fields</span>
+                            <span class="text-xs font-mono text-emerald-400 font-semibold">ECE = 0.013 Calibration</span>
                         </div>
 
                         <h3 class="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">
@@ -632,27 +991,27 @@
                                 The Creative Genesis:
                             </strong>
                             <p>
-                                Replaces static Euclidean hyperplanes with continuous Optimal Transport line-integrals. Classifies samples by the physical kinetic energy needed to transform them into class manifolds.
+                                Reframes classification through the physical principle of least action. Rather than slicing Euclidean space with hyperplanes, GTD calculates the line-integral kinetic action required to transport a sample onto class prototype manifolds along parameterized velocity fields.
                             </p>
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            A non-convex, geometry-first classification framework that replaces flat softmax cross-entropy with parameterized neural velocity fields. Samples follow dynamical least action paths, solving manifold entanglement where linear classifiers fail.
+                            Proves 4 mathematical theorems (topological necessity, normal bundle quadratic stability, constrained identifiability, and provable spatial OOD separation). Solves non-convex topological entanglements like the 3D Hopf Link (linked rings, 100% accuracy) where linear and distance classifiers collapse (63.3%).
                         </p>
 
                         <!-- Tech Specs & Features -->
                         <div class="space-y-2 pt-2">
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Continuous line-integral action functional \(\int \frac{1}{2}\|v_\theta(x_t, t)\|^2 dt\)</span>
+                                <span>Theorems 1–4 verified in empirical theory suite (theory_verification_results.json)</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Robust against adversarial boundary attacks</span>
+                                <span>Ultra-low Expected Calibration Error (ECE = 0.013, Brier score = 0.0005)</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Geometry-first classification on non-convex manifolds</span>
+                                <span>Benchmarked on CIFAR-10, MNIST, spirals, islands, and 3D Hopf Link</span>
                             </div>
                         </div>
                     </div>
@@ -660,9 +1019,9 @@
                     <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
                         <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                             <i data-lucide="folder" class="w-4 h-4 text-emerald-400"></i>
-                            <span>reduction_network/</span>
+                            <span>reduction_network/ • 2,512 LOC</span>
                         </div>
-                        <span class="text-xs font-mono text-slate-400">Geometry Research</span>
+                        <span class="text-xs font-mono text-slate-400">Theorems 1–4 Verified</span>
                     </div>
                 </article>
 
@@ -670,10 +1029,10 @@
                 <article class="project-card spotlight-card p-8 flex flex-col justify-between" data-category="nlp sys">
                     <div class="space-y-5">
                         <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-950/80 text-blue-300 border border-blue-800/60">
-                                ⏳ NeurIPS Paper • Streaming Agents
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-950/80 text-blue-300 border border-blue-800/60 font-semibold">
+                                ⏳ NeurIPS Package • 9.2/10
                             </span>
-                            <span class="text-xs font-mono text-slate-400">Bounded Rationality</span>
+                            <span class="text-xs font-mono text-emerald-400 font-semibold">0.93ms Latency (1,071 m/s)</span>
                         </div>
 
                         <h3 class="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
@@ -687,27 +1046,27 @@
                                 The Creative Genesis:
                             </strong>
                             <p>
-                                Embraces the irreversible nature of real-world physical and conversational action. Solves the problem that agents cannot "rewind" external speech or robot manipulation.
+                                Embraces the irreversible arrow of time in embodied AI. Unlike offline NLP that reads documents backwards, streaming agents cannot un-commit actions. Formulates optimal chronological commitment thresholds under memory budget constraints.
                             </p>
                         </div>
 
                         <p class="text-sm text-slate-300 leading-relaxed">
-                            Official codebase and reproducibility package for the NeurIPS paper. Tracks entity states chronologically under compute budget constraints, replacing traditional offline bidirectional global attention with bounded-rational streaming commitments.
+                            Packaged for NeurIPS double-blind submission with complete reproducibility artifacts. Under strict constant memory budget \(B=10\), Flux maintains <strong>42.54% precision</strong>, delivering <strong>0.93ms latency per mention</strong> and <strong>1,071.2 mentions/second throughput</strong> on 10-fold LitBank splits.
                         </p>
 
                         <!-- Tech Specs & Features -->
                         <div class="space-y-2 pt-2">
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Zero-rollback commitment boundary optimization</span>
+                                <span>Component ablation suite: Anchor protection, Superposition, Unknown prior</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>LitBank & streaming dialogue benchmark validation</span>
+                                <span>Complete NeurIPS submission archive + Mathematical foundations dossier</span>
                             </div>
                             <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                <span>Formulated under sequential decision & bounded rationality theory</span>
+                                <span>Strict zero-rollback invariant assertions across 2,832 benchmark mentions</span>
                             </div>
                         </div>
                     </div>
@@ -715,7 +1074,7 @@
                     <div class="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-between">
                         <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
                             <i data-lucide="folder" class="w-4 h-4 text-blue-400"></i>
-                            <span>coref/COREF_res/</span>
+                            <span>coref/COREF_res/ • 8,290 LOC</span>
                         </div>
                         <a href="#publications" class="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
                             <span>View Paper & BibTeX</span>
